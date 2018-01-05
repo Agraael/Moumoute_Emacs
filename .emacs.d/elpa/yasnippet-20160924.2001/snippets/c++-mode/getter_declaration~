@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: getter_declaration
+# key: get
+# --
+${1:type} get${2:name}() const;

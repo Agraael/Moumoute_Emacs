@@ -1,0 +1,72 @@
+#!/bin/bash
+## Memacs for  in /home/cedric
+##
+## Made by Cedric
+## Login   <cedric@epitech.eu>
+##
+## Started on  Thu Nov 10 20:05:45 2016 Cedric
+## Last Update Thu Apr  6 11:34:30 2017 Kraken
+##
+
+
+USERID=`id -u`
+
+export MOME=`dirname "$BASH_SOURCE"`
+MAIN_EL="$MOME/.Moumoute_emacs"
+
+
+
+OPTIONS="Description:
+     Memacs open a Moumoute_emacs Client connected to a Local Moumoute Server
+     If the Moumoute Server doesn't exist, It is created by Memacs
+     The Moumoute Server cant be stoped (it will kill all client) and launched manually
+     You can also Launch a non client Moumoute_emacs
+
+Usage:
+     Memacs [Memacs Options] [Files] [Emacs Options]
+
+Options:
+    -h, --melp       This help menu of Memacs. For emacs help use -n and --help
+                     and for emacsclient help just --help
+    -r --runserver      Start Moumoute_emacs Server in the background without opening a Client
+    -n, --noserve    Lauching a Moumoute_emacs non client
+    -s, --stopserver Stop Moumoute_emacs Server Warnning ! use save-some-buffer (C-x s) before
+    --just_sauce	     Use this in case of bug emergency !!!
+    --raw_sauce              This is meant for debug , not for you !!!
+"
+
+
+case "$1" in
+
+    -s|--stop) if [ -e /tmp/emacs$USERID/Moumoute_server ]
+	       then
+		   echo "Stoping Moumoute_emacs Server !" ; emacsclient -s Moumoute_server --eval "(kill-emacs)" ; exit 1
+	       else
+		   echo "No Moumoute_emacs Server !" ; exit 1
+	       fi ;;
+
+    -h|--melp) printf "\n$OPTIONS\n" ; exit 1 ;;
+
+    -n|--noserve) echo "Starting Moumoute_emacs No Client !"; shift ; TERM=xterm-256color emacs -nw -l $MAIN_EL -q "$@" ; exit 1;;
+
+    --just_sauce) if [ ! -e /tmp/emacs$USERID/Moumoute_server ]
+		  then
+		      echo "Destroying the Moumoute_emacs server !!" ; rm /tmp/emacs$USERID/Moumoute_server ; exit 1
+		  else
+		      echo "No Moumoute_emacs Server !" ; exit 1
+		  fi;;
+    --raw_sauce) printf "Are we in trouble ???\nMemacs debug mode activated !!"; shift ; TERM=xterm-256color emacs -nw --debug-init -l $MAIN_EL -q "$@" ; exit 1;;
+    -r|--runserver) if [ ! -e /tmp/emacs$USERID/Moumoute_server ]
+		    then
+			echo "Starting Moumoute_emacs Server !"; TERM=xterm-256color emacs --daemon=Moumoute_server -l $MAIN_EL -q  "$@"; exit 1
+		    else
+			echo "Moumoute_emacs Server is already running !" ; exit 1
+		    fi;;
+
+    *) if [ ! -e /tmp/emacs$USERID/Moumoute_server ]
+       then
+	   echo "Starting Moumoute_emacs Server and Client !" ; emacs --daemon=Moumoute_server -l $MAIN_EL -q ; TERM=xterm-256color emacsclient -nw -s Moumoute_server "$@" ; exit 1
+       else
+	   echo "Starting Moumoute_emacs Client !" ; TERM=xterm-256color emacsclient -nw -s Moumoute_server "$@" ; exit 1
+       fi;;
+esac

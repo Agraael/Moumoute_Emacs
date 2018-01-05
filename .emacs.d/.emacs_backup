@@ -1,0 +1,111 @@
+(setq emacs-lisp-dir "~/.emacs.d/"
+      my-elmode-dir (concat emacs-lisp-dir "elmodes/"))
+(setq load-path
+      (append load-path (list my-elmode-dir)))
+
+(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path  "~/.emacs.d/elpa/auto-complete-20160416.604")
+
+(load "std.el")
+(load "std_comment.el")
+;; chargement .myemacs
+(if (file-exists-p "~/.emacs.d/.myemacs")
+    (load-file "~/.emacs.d/.myemacs"))
+;;end
+
+
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   '("melpa" . "http://melpa.org/packages/")
+   t)
+  (package-initialize))
+
+
+;; auto-completion
+(require 'auto-complete)
+(global-auto-complete-mode t)
+
+(global-set-key (kbd "<f5>") 'auto-complete-mode) ;; toggle auto-complete
+
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20160416.604/dict") ;; emplacement des dictionaires
+(require 'auto-complete-config)
+(ac-config-default)
+(setq ac-auto-start 1) ;; nb de caractère quand auto-complete se lance
+;;end
+
+
+;;anzu mode
+(global-anzu-mode +1)
+(global-set-key [remap query-replace] 'anzu-query-replace)
+(global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+(global-set-key (kbd "M-µ") ' anzu-query-replace-at-cursor) ;; remplace en prennant le curseur comme recherche
+
+(setq anzu-cons-mode-line-p nil)
+(setcar (cdr (assq 'isearch-mode minor-mode-alist)) ;; C-s la recherche se fait en haut et en bas
+        '(:eval (anzu--update-mode-line)))
+;;end
+
+
+;;auto correction
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(add-hook 'c-mode-hook 'c-mode-flycheck-gcc)
+(defun c-mode-flycheck-gcc ()
+  (flycheck-select-checker 'c/c++-gcc)
+  (flycheck-mode))
+
+(global-set-key (kbd "<f12>") 'flycheck-list-errors)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+;;end
+
+
+;; elscreen mode
+(elscreen-start)
+;;end
+
+
+;;aggressive mode
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+(add-hook 'css-mode-hook #'aggressive-indent-mode)
+(global-set-key (kbd "<f7>") 'aggressive-indent-mode)
+;;end
+
+
+;; new linum mode
+(require 'linum)
+
+(defvar linum-current-line 1 "Current line number.")
+(defvar linum-border-width 1 "Border width for linum.")
+
+(defface linum-current-line
+  `((t :inherit linum
+       :foreground "goldenrod"
+       :weight bold
+       ))
+  "Face for displaying the current line number."
+  :group 'linum)
+
+(defadvice linum-update (before advice-linum-update activate)
+  "Set the current line."
+  (setq linum-current-line (line-number-at-pos)
+        ;; It's the same algorithm that linum dynamic. I only had added one
+        ;; space in front of the first digit.
+        linum-border-width (number-to-string
+                            (+ 1 (length
+                                  (number-to-string
+                                   (count-lines (point-min) (point-max))))))))
+
+(defun linum-highlight-current-line (line-number)
+  "Highlight the current line number using `linum-current-line' face."
+  (let ((face (if (= line-number linum-current-line)
+                  'linum-current-line
+                'linum)))
+    (propertize (format (concat "|" "%" linum-border-width "d" " |") line-number)
+                'face face)))
+
+(setq linum-format 'linum-highlight-current-line)
+;;end

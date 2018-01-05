@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: setter
+# key: set
+# --
+void ${1:Class}::set${2:name}(${3:type} new_$2){
+ this->_$2 = new_$2;
+}

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: getter
+# key: get
+# --
+${1:type} ${2:Class}::get${3:name}() const{
+ return this->${3:$(yas/substr yas-text "[^: ]*")};
+}
+$0

@@ -1,0 +1,16 @@
+
+;; ----- smex-history -----
+(
+ locate-library
+ cd
+ 5x5
+ arp
+ dbx
+ dig
+ erc
+)
+
+;; ----- smex-data -----
+(
+ (locate-library . 6)
+)

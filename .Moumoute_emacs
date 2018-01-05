@@ -1,0 +1,675 @@
+1;2802;0c1;2802;0c;;
+;; .emacs for moumoute_emacs in /home/cescut_c
+;;
+;; Made by CESCUTTI Cédric
+;; Login   <cescut_c@epitech.net>
+;;
+;; Started on  Thu Jun 30 14:16:13 2016 CESCUTTI Cédric
+;; Last Update Sun Oct 15 11:34:36 2017 Kraken
+;;
+
+;; je devrais faire un MAN pour expliquer Moumoute emacs
+
+
+(require 'package) ;; You might already have this line
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
+
+(add-to-list 'package-archives
+	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+
+(defvar HOME (getenv "MOME"))
+
+(defun add-to-list-with-subdirs (base exclude-list include-list)
+  (dolist (f (directory-files base))
+	(let ((name (concat base "/" f)))
+	  (when (and (file-directory-p name)
+				 (not (member f exclude-list)))
+		(add-to-list 'load-path name)
+		(when (member f include-list)
+		  (add-to-list-with-subdirs name exclude-list include-list)))))
+  (add-to-list 'load-path base))
+
+;; (setq user-emacs-directory (file-truename (concat HOME "/.emacs.d/")))
+
+;; configuration pour le dev lisp
+
+
+;;(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq inferior-lisp-program "/usr/bin/clisp")
+(setq slime-contribs '(slime-fancy))
+
+(setq slime-net-coding-system 'utf-8-unix)
+
+(setq emacs-lisp-dir (concat HOME "/.emacs.d/")
+      my-elmode-dir (concat emacs-lisp-dir "elmodes/"))
+
+(setq load-path
+      (append load-path (list my-elmode-dir)))
+
+;; mode debug
+;; (setq debug-on-error t)
+
+;;(add-to-list 'load-path "/usr/share/emacs/")
+(let ((default-directory (concat HOME "/.emacs.d/"))
+	  (normal-top-level-add-subdirs-to-load-path)))
+
+(add-to-list-with-subdirs HOME '("." "..") '("vendor" "my-lisp"))
+(add-to-list-with-subdirs (concat HOME "/.emacs.d") '("." "..") '("vendor" "my-lisp"))
+(add-to-list-with-subdirs (concat HOME "/.emacs.d/elpa") '("." "..") '("vendor" "my-lisp"))
+
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8)
+
+;; notes -> C-c C-g goto-line
+;; C-g cancel command
+
+;; peut etre mettre god mode pour plus de racourci comme vim peut etre je sais pas pour l'instant j'en ai pas besoin
+;; changemment header epitech
+;; pour l'instant c'est adapté pour le mode terminal , mais va faloir creer un pannel de couleur pour faire de sortes d'alias
+;;
+;; pour l'instant je sais pas comment les intégrer dans dans les set-custom-face et c'est casse couilles
+;; parce les couleur du terminal on les meme code que des couleur 256-bit , et ont la priorité dessus , genre red et color-160
+;; changer toutes les couleur pas leur code hexa
+
+
+;; les deux mode désactivé en terminal sont git-gutter -> fait freeze et minimap -> bah ça marche pas en mode terminal
+
+;; faire une commande pour pouvoir editer les dictionaires de autocomplete
+
+;; ouah et apprendre comment sont ecris les YASnippet , ça serait cool dans rajouter quelques un
+;; et apres peux etre mettre ça dans le terminal
+
+;; pour l'instant le theme est forcé , dans une future version bah , permettre au gens de changer de style
+;; bon après SPACEMACS le fait pas , donc fuck  c'est pas une priorité
+
+;; lololol c'est quand meme des notes de merde , mais bon faut bien que j'organise un minum mes taches à  faire sinon je m'égare !!!
+
+;; paufiner les face de Moumoute Emacs en mode terminal et GUI (en GUI ya encore plein de bug , ça va etre long a faire ça)
+
+;; module batterie -> corriger les couleur
+
+;; eclairage de la ligne  + mise en gras
+
+;; alors attention c'est pas la les header de base , ils ont été un peu corrigé et modifier
+
+(if (file-exists-p (concat HOME "/.emacs.d/std.el"))
+    (load-file (concat HOME "/.emacs.d/std.el")))
+(if (file-exists-p (concat HOME "/.emacs.d/std_comment.el"))
+    (load-file (concat HOME "/.emacs.d/std_comment.el")))
+
+;; end
+
+;; (if (file-exists-p "/home/cedric/Emacs_Moumoute/.moumoute_emacs")
+;;      (load-file "/home/cedric/Emacs_Moumoute/.moumoute_emacs"))
+
+;; chargement theme
+(if (file-exists-p (concat HOME "/monokai-theme.el"))
+    (load-file (concat HOME "/monokai-theme.el")))
+;;end
+
+(require 'cc-mode)
+;; chargement .myemacs
+(if (file-exists-p (concat HOME "/.emacs.d/myemacs.el"))
+    (load-file (concat HOME "/.emacs.d/myemacs.el")))
+;; end
+
+
+(require 'linum-off)
+(global-linum-mode t)
+
+;; petit plus
+(electric-pair-mode 1)
+(electric-indent-mode 1)
+(set-default 'truncate-lines t)
+
+(setq display-time-default-load-average nil) ;; enleve la valeur de load après la date
+
+(setq display-time-string-forms
+      '((propertize (format-time-string " %A %d %B %Y [%H:%M] ") 'face 'bold)))
+
+;; (defun insert-date ()
+;;   (interactive)
+;;   (insert (format-time-string "[%Y-%m-%d-%H:%M]"))) ;; insert la date dans le buffer
+
+;;(global-set-key (kbd "C-x t") 'term)
+
+(display-time-mode t)
+
+;;end
+
+;; Yasnippet , ok je l'ai ajouter pour la V3
+
+
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;; ido mode partout
+
+(if (file-exists-p (concat HOME "/.emacs.d/elpa/ido-vertical-mode-20160429.1037"))
+    (load-file (concat HOME "/.emacs.d/elpa/ido-vertical-mode-20160429.1037/ido-vertical-mode.el"))) ;; contient les variables customisées
+
+(setq ido-enable-flex-matching t)
+
+(setq ido-everywhere t)
+(ido-everywhere 1)
+(ido-mode 1)
+(ido-vertical-mode 1)
+(setq ido-auto-merge-work-directories-length -1) ;;ne cherche pas ailleur que dans le dossier
+
+
+
+(add-to-list 'load-path	(concat HOME "/.emacs.d/elpa/ido-ubiquitous-20160"))
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
+
+(global-set-key (kbd "C-c k") 'ido-describe-bindings) ;; aide sur les commandes
+(global-set-key (kbd "C-c C-b") 'ido-switch-buffer)
+;; bofbof le yes no
+(require 'ido-yes-or-no)
+(ido-yes-or-no-mode 1)
+
+(setq ido-use-faces t)
+(set-face-attribute 'ido-vertical-first-match-face nil
+		    :background "color-234"
+		    :foreground "color-196")
+(set-face-attribute 'ido-vertical-only-match-face nil
+		    :background "color-234"
+		    :foreground "color-46")
+(set-face-attribute 'ido-vertical-match-face nil
+		    :foreground nil)
+(setq ido-vertical-show-count t)
+(setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right)
+
+
+;;end
+
+;; auto-completion
+
+(add-to-list 'load-path  (concat HOME "/.emacs.d/elpa/auto-complete-20160416.604"))
+(require 'auto-complete)
+(global-auto-complete-mode t)
+
+(global-set-key (kbd "<f5>") 'auto-complete-mode) ;; toggle auto-complete
+
+
+(add-to-list 'ac-dictionary-directories (concat HOME "/.emacs.d/elpa/auto-complete-20160416.604/dict"))
+;; emplacement des dictionaires
+(require 'auto-complete-config)
+(ac-config-default)
+(setq ac-auto-start 1) ;; nb de caractère quand auto-complete se lance
+
+;;auto-complete dans les "" et <>
+(setq ac-disable-faces nil)
+
+
+
+;; auto-complete pour les lib de c
+(require 'ac-c-headers)
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    (add-to-list 'ac-sources 'ac-source-c-headers)
+	    (add-to-list 'ac-sources 'ac-source-c-header-symbols t)))
+(add-hook 'c++-mode-hook
+	  (lambda ()
+	    (add-to-list 'ac-sources 'ac-source-c-headers)
+	    (add-to-list 'ac-sources 'ac-source-c-header-symbols t)))
+
+
+
+;; auto-complete eclipse
+
+;; (custom-set-variables
+;;  '(eclim-eclipse-dirs '("~/nonStandard/eclipse"))
+;;  '(eclim-executable "~/nonStandard/eclipse/eclim"))
+
+;; (require 'ac-emacs-eclim-source)
+;; (ac-emacs-eclim-config)
+
+;;end
+
+
+;;anzu mode
+
+(if (file-exists-p (concat HOME "/.emacs.d/elpa/anzu-20160617.730/"))
+    (load-file (concat HOME "/.emacs.d/elpa/anzu-20160617.730/anzu.el")))
+
+(global-anzu-mode +1)
+
+(global-set-key [remap query-replace] 'anzu-query-replace)
+(global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+(global-set-key (kbd "M-µ") ' anzu-query-replace-at-cursor) ;; remplace en prennant le curseur comme recherche
+
+(setq anzu-cons-mode-line-p t)
+(setcar (cdr (assq 'isearch-mode minor-mode-alist)) ;; C-s la recherche se fait en haut et en bas
+	'(:eval (anzu--update-mode-line)))
+
+(defun isearch-face-settings ())
+(set-face-background 'lazy-highlight "color-154") ;; change la couleur du mode recherche
+
+;;end
+
+;;auto correction
+
+;; (use-package flycheck
+;;   :ensure t
+;;   :init (global-flycheck-mode))
+
+(require 'flycheck)
+
+(global-set-key (kbd "<f8>") 'global-flycheck-mode)
+
+
+(add-hook 'c-mode-hook 'c-mode-flycheck-gcc)
+(defun c-mode-flycheck-gcc ()
+  (flycheck-select-checker 'c/c++-gcc))
+
+(add-hook 'c++-mode-hook 'c-mode-flycheck-gcc)
+(defun c-mode-flycheck-gcc ()
+  (flycheck-select-checker 'c/c++-gcc))
+
+(global-flycheck-mode t)
+
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
+
+(add-to-list 'display-buffer-alist
+			 `(,(rx bos "*Flycheck errors*" eos)
+			   (display-buffer-reuse-window
+				display-buffer-in-side-window)
+			   (reusable-frames . visible)
+			   (side            . bottom)
+			   (window-height   . 0.15)))
+
+(defun flycheck-toggle ()
+  (interactive)
+  (if (get-buffer "*Flycheck errors*")
+      (kill-buffer "*Flycheck errors*")
+    (flycheck-list-errors)
+    )
+  )
+
+(global-set-key (kbd "<f9>") 'flycheck-toggle)
+
+
+;;end
+
+
+;; elscreen mode
+;; pour avoir des tab comme un navigateur
+
+(if (file-exists-p (concat HOME "/.emacs.d/elpa/elscreen-20160613.251/elscreen.el"))
+    (load-file (concat HOME "/.emacs.d/elpa/elscreen-20160613.251/elscreen.el")))
+;; contient les variables customisées
+
+
+
+(elscreen-start)
+(elscreen-toggle-display-screen-number)
+(global-set-key (kbd "<C-M-prior>") 'elscreen-previous)
+(global-set-key (kbd "<C-M-next>") 'elscreen-next)
+
+;;end
+
+;;commands for windows -> je me souviens meme plus comment j'ai fait ça XD
+
+(global-set-key (kbd "C-x 4") 'delete-window)
+(global-set-key (kbd "C-x 5") 'delete-other-windows)
+(global-set-key (kbd "C-x 1") 'kill-buffer-and-window)
+(global-set-key (kbd "C-x 6") 'kill-this-buffer)
+
+(defun open_file_right (filename)
+  (interactive)
+  (split-window-right)
+  (windmove-right)
+  (find-file filename))
+
+(defun my-window-right (filename)
+  (interactive "Find file in new window right: ")
+  (elscreen-find-and-goto-by-buffer (open_file_right filename)))
+
+(defun open_file_below (filename)
+  (interactive)
+  (split-window-below)
+  (windmove-down)
+  (find-file filename))
+
+(defun my-window-below (filename)
+  (interactive "Find file in new window below: ")
+  (elscreen-find-and-goto-by-buffer (open_file_below filename)))
+
+(global-set-key (kbd "C-x 3") 'my-window-right)
+(global-set-key (kbd "C-x 2") 'my-window-below)
+
+(global-set-key (kbd "C-c <C-right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "C-c <C-left>") 'shrink-window-horizontally)
+(global-set-key (kbd "C-c <C-up>") 'enlarge-window)
+(global-set-key (kbd "C-c C-j") 'shrink-window-if-larger-than-buffer)
+
+;; (defun hello (someone)
+;;   "Say hello to SOMEONE via M-x hello."
+;;   (interactive "sWho do you want to say hello to? ")
+;;   (message "Hello %s!" someone))
+
+;;end
+
+
+;;aggressive mode
+
+(require 'aggressive-indent)
+
+;; change la taille des tab et decalage de base
+
+;; (setq-default tab-width 4) ;; change la taille des tabs
+;; (setq-default c-basic-offset 4) ;;indentation par defaut sur le mode c / c++ / java
+(setq-default c-basic-offset 8
+		  tab-width 8
+		  indent-tabs-mode t)
+
+
+
+(global-aggressive-indent-mode)
+(add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
+(add-hook 'css-mode-hook #'aggressive-indent-mode)
+(global-set-key (kbd "<f12>") 'aggressive-indent-mode)
+;;end not used
+
+
+;;git checker trop bugger pour l'instant
+;; bug avec le linum , quand les signes s'affiches -> pas de modif pas de signes
+;; et donc il pas toute la colone qui est affiché , quand elle apparait pour la première fois
+;; ça va , mais si elle disparait bah ça fou la merde -> trouver un moyen de l'afficher tout le temps
+;; en modifiant .Moumoute_emacs (pas les source , si ya une update , j'ai pas envie de rechanger tout)
+
+;; bon aussi ça fait freeze emacs en mode terminal
+
+
+;;(global-set-key (kbd "M-=") 'git-gutter-mode)
+
+(require 'git-gutter)
+
+(global-git-gutter-mode 0)
+(custom-set-variables
+ '(git-gutter:update-interval 5))
+(custom-set-variables
+ '(git-gutter:modified-sign "│=│")
+ '(git-gutter:added-sign "│+│")
+ '(git-gutter:deleted-sign "│-│")
+ '(git-gutter:unchanged-sign "│ │"))
+
+(set-face-underline 'git-gutter:unchanged nil)
+(set-face-underline 'git-gutter:modified nil)
+(set-face-underline 'git-gutter:added nil)
+(set-face-underline 'git-gutter:deleted nil)
+
+(set-face-background 'git-gutter:unchanged "ARGBBB000000") ;;tranparent color
+(set-face-background 'git-gutter:modified "ARGBBB000000") ;;tranparent color
+(set-face-background 'git-gutter:added "ARGBBB000000") ;;tranparent color
+(set-face-background 'git-gutter:deleted "ARGBBB000000") ;;tranparent color
+
+(set-face-foreground 'git-gutter:modified "color-226")
+(set-face-foreground 'git-gutter:added "color-40")
+(set-face-foreground 'git-gutter:deleted "color-196")
+(set-face-foreground 'git-gutter:unchanged "blue")
+;;end
+
+;; neo tree
+
+(if (file-exists-p (concat HOME "/.emacs.d/elpa/neotree-20160306.730"))
+    (load-file (concat HOME "/.emacs.d/elpa/neotree-20160306.730/neotree.el")))
+;; contient les variables customisées
+
+(setq neo-theme 'arrow)
+(setq neo-show-hidden-files t)
+
+(global-set-key [f10] 'neotree-toggle)
+(custom-set-faces
+ '(my-loong-line-face ((((class color)) (:foreground "color-165" :bold bold))) t)
+ '(my-tab-face ((((class color)) (:foreground "color-234" :weight bold :underline t))) t)
+ '(my-trailing-space-face ((((class color)) (:background "color-206"))) t)
+ '(neo-dir-link-face ((t (:foreground "blue"))))
+ '(neo-file-link-face ((t (:foreground "color-255"))))
+ '(trailing-whitespace ((t (:background "color-208"))))
+ '(neo-theme ((t (:foreground "color-221")))))
+
+;;end
+
+
+;; New Linum mode
+(require 'linum)
+
+(ac-linum-workaround) ;; corige bug avec auto complete
+(set-face-attribute 'linum nil :bold nil)
+(set-face-attribute 'linum nil :inverse-video nil)
+(set-face-attribute 'linum nil :underline nil)
+(set-face-attribute 'linum nil :background "color-234")
+
+(defvar linum-current-line 1 "Current line number.")
+(defvar linum-border-width 1 "Border width for linum.")
+
+(defface linum-current-line
+  `((t :inherit linum
+       :foreground "#FFD600"
+       :weight extra-bold
+       :background "color-234"
+       ))
+  "Face for displaying the current line number."
+  :group 'linum)
+
+(defadvice linum-update (before advice-linum-update activate)
+  "Set the current line."
+  (setq linum-current-line (line-number-at-pos)
+        ;;meme algo que linum dynamic
+        ;;avec l'espace devant.
+        linum-border-width (number-to-string
+                            (+ 1 (length
+                                  (number-to-string
+                                   (count-lines (point-min) (point-max))))))))
+
+(defun linum-highlight-current-line (line-number)
+  "Highlight the current line number using `linum-current-line' face."
+  (let ((face (if (= line-number linum-current-line)
+                  'linum-current-line
+                'linum)))
+    (propertize (format (concat "│" "%" linum-border-width "d" " │") line-number)
+                'face face)))
+
+(setq linum-format 'linum-highlight-current-line)
+;;end
+
+
+;; affichage batterie
+;; (add-hook 'after-init-hook #'fancy-battery-mode)
+
+(require 'fancy-battery)
+
+(setq fancy-battery-show-percentage t)
+(setq battery-update-interval 1)
+(customize-set-variable 'fancy-battery-mode t)
+(set-face-attribute 'fancy-battery-discharging nil :foreground "color-226")
+(set-face-attribute 'fancy-battery-charging t :foreground "color-46")
+(set-face-attribute 'fancy-battery-critical nil :foreground "color-160")
+;;end
+
+
+;;Smex pour chercher des commandes
+(require 'smex)
+(smex-initialize)
+;; (global-set-key (kbd "M-x") 'smex)
+;;end
+
+
+;;helm attention + aysnc ------------------
+;; ;;TODO: gros putain de temps de chargement avec ce mode , je dois revoir son implementation
+
+
+(autoload 'dired-async-mode "dired-async.el" nil t)
+(dired-async-mode 1)
+
+(require 'helm-config)
+(helm-mode 0)
+;; better use for devellopement of Moumoute emacs
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+
+(helm-autoresize-mode t)
+(setq helm-autoresize-max-height 25)
+(setq helm-autoresize-min-height 25)
+
+(set-face-attribute 'helm-selection t
+		    :background "color-235"
+		    :foreground "color-160"
+		    :bold t)
+
+;;; end
+
+
+
+
+;; mode line
+(require 'powerline)
+(powerline-default-theme)
+(setq shift-select-mode t)
+;; end
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flycheck-error ((t (:background nil :foreground "color-160" :underline "color-160" :inherit unspecified :weight bold))))
+ '(flycheck-warning((t (:background nil :foreground "color-226" :underline "color-226" :inherit unspecified :weight bold))))
+ '(flycheck-error-list-highlight ((t (:background "color-238" :weight bold))))
+ '(flycheck-info((t :foreground "color-51" :background unspecified)))
+ '(highlight ((t (:weight bold))))
+ '(ido-virtual ((t (:foreground "#5FFFFF"))))
+ '(my-loong-line-face ((((class color)) (:foreground "color-177" :bold bold))) t)
+ '(my-tab-face ((((class color)) (:foreground "color-237" :weight bold :underline t))) t)
+ '(my-trailing-space-face ((((class color)) (:background "color-206"))) t)
+ '(neo-dir-link-face ((t (:foreground "blue"))))
+ '(neo-file-link-face ((t (:foreground "color-255"))))
+ '(neo-theme ((t (:foreground "color-221"))))
+ '(trailing-whitespace ((t (:background "color-208"))))
+ )
+(put 'downcase-region 'disabled nil)
+
+
+(setq-default global-font-lock-mode nil)
+
+(setq inhibit-splash-screen t)
+(setq inhibit-startup-message t)
+
+;; (add-to-list 'load-path (concat HOME "/.emacs.d/elpa/auto-package-update"))
+;; (require 'auto-package-update)
+
+
+;; seulement pour la prod et moi , doit etre désactivé en publication
+;;(auto-package-update-at-time "08:00")
+
+
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's function
+(defun my-irony-mode-hook ()
+  (define-key irony-mode-map [remap completion-at-point]
+    'irony-completion-at-point-async)
+  (define-key irony-mode-map [remap complete-symbol]
+    'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+
+
+;; extension des selections
+;; permet de selectionner tout se qu'il y entre parenthèse ou autre !!
+
+(require 'expand-region)
+(global-set-key (kbd "C-c =") 'er/expand-region)
+(setq delete-selection-mode t)  ;; permet de remplacer le texte selectionné
+;;end
+
+
+;; curseurs multiples
+;; warning fait ramer en mode sh (-nw)
+
+;(require 'multiple-cursors)
+
+;(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+;(global-set-key (kbd "C-c <") 'mc/mark-next-like-this)
+;(global-set-key (kbd "C-c >") 'mc/mark-previous-like-this)
+;(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;;(global-set-key (kbd "C-c <") 'mc/mark-pop)
+
+;; Yasnippet pour lisp
+(require 'common-lisp-snippets)
+
+
+(require 'smart-comment)
+(global-set-key (kbd "M-;") 'smart-comment)
+(require 'smartparens-config)
+(smartparens-mode t)
+
+;;
+;; .Moumoute_emacs in /home/cedric
+;;
+;; Updated on  Sun Oct 16 21:36:06 2016 Cedric
+;;
+;; Detail: add new faces
+;;
+
+
+
+;;(let* (
+;;      (class '((class color) (min-colors 257)))
+;;      (region-color "#444444")
+;;      ))
+
+;;POURQUOI J'AI FAIT Ça PUTAIN : ça fait bugger
+
+(custom-set-faces
+ '(region ((t (:background "#585858" :inherit nil))))
+ '(hl-line ((t (:background "#262626" :weight bold))))
+ '(show-paren-match ((t (:weight bold :background "color-242" :foreground "color-118" :inverse-video nil))))
+ '(helm-selection ((t (:inherit t))))
+ )
+
+(global-hl-line-mode t)
+(custom-set-faces '(highlight ((t (:weight bold :background "color-235")))))
+
+;; company modes vs auto-complete (a choisir un jour)
+
+;; (add-hook 'after-init-hook 'global-company-mode)
+
+;; (eval-after-load 'company
+;;   '(add-to-list 'company-backends 'company-irony))
+
+;; (require 'company-irony-c-headers)
+;; ;; Load with `irony-mode` as a grouped backend
+;; (eval-after-load 'company
+;;   '(add-to-list
+;;     'company-backends '(company-irony-c-headers company-irony)))''
+
+
+(defun close-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
+
+
+
+;; -------------------function arg for c and c++
+;;(fa-config-default)

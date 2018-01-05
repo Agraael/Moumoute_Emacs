@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+# key: asset
+# name: asset
+# contributor: MyFreeWeb
+# --
+register('${1:js_main}', Bundle(${2:'jquery-1.4.1.min.js',}), filters='${3:jsmin}', output='${4:bundle.js}')

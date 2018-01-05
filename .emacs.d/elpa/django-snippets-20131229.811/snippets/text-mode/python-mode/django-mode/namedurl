@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+# key: namedurl
+# name: namedurl
+# contributor: Brandon Height <bmheight@gmail.com>
+# --
+url(r'${1:^page/$}', '${2:myview}', name='${3:url_name}'),

@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: class
+# key: cls
+# --
+class ${1:Name}{
+private:
+
+public:
+    ${1:$(yas/substr yas-text "[^: ]*")}();
+    ${1:$(yas/substr yas-text "[^: ]*")}(${1:$(yas/substr yas-text "[^: ]*")} const&);
+    ${2:~${1:$(yas/substr yas-text "[^: ]*")}();}
+    ${1:$(yas/substr yas-text "[^: ]*")}& operator= (${1:$(yas/substr yas-text "[^: ]*")} const&);
+public:
+
+};
+$0

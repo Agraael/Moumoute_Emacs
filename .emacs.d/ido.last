@@ -1,0 +1,157 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/cedric/Data/dev_pharmapocket/old_external/" . "external/")
+ ("/home/cedric/Data/language_learning/lisp_and_emacs/" . "lisp/")
+ ("/home/cedric/Data/C++Pool/Day01/" . "ex00/")
+ ("/usr/share/plymouth/" . "themes/")
+ ("/usr/share/" . "plymouth/")
+ ("/usr/" . "share/")
+ ("/home/cedric/Downloads/" . "ubuntu-faded-screen/")
+ ("/usr/share/plymouth/themes/" . "kubuntu-logo/")
+ ("/home/cedric/Data/C++Pool/" . "Day01/")
+ ("/home/cedric/Data/language_learning/" . "lisp_and_emacs/")
+ ("/home/cedric/.emacs.d/elpa/yasnippet-20160924.2001/snippets/" . "c-mode/")
+ ("/home/cedric/.emacs.d/elpa/yasnippet-20160924.2001/" . "snippets/")
+ ("/home/cedric/Emacs_Moumoute/script-epitech/installation/.files/" . ".emacs.d/")
+ ("/home/cedric/Emacs_Moumoute/script-epitech/installation/" . ".files/")
+ ("/home/cedric/Emacs_Moumoute/script-epitech/" . "installation/")
+ ("/home/cedric/Emacs_Moumoute/" . "script-epitech/")
+ ("/home/cedric/Data/dev_pharmapocket/external/enterprise/" . "products/")
+ ("/home/cedric/Data/dev_pharmapocket/external/" . "enterprise/")
+ ("/home/" . "cedric/")
+ ("/home/cedric/.emacs.d/elpa/" . "git-gutter-20160903.852/")
+ ("/home/cedric/.emacs.d/" . "elpa/")
+ ("/home/cedric/.oh-my-zsh/" . "themes/")
+ ("/" . "home/")
+ ("/home/cedric/Data/dev_pharmapocket/" . "old_external/")
+ ("/home/cedric/Data/" . "dev_pharmapocket/")
+ ("/home/cedric/" . "Emacs_Moumoute/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/cedric/Data/dev_pharmapocket/old_external/external/"
+ "/home/cedric/Data/language_learning/lisp_and_emacs/lisp/"
+ "/home/cedric/Downloads/ubuntu-faded-screen/"
+ "/media/cedric/2337a639-4d85-4f36-ade6-cdcedffd0cf2/cescut_c/rendu/synthese/palindrome/"
+ "/home/cedric/"
+ "/home/cedric/Data/C++Pool/Day01/"
+ "/home/cedric/Data/language_learning/c/"
+ "/home/cedric/.emacs.d/elpa/helm-20161010.1043/"
+ "/home/cedric/Emacs_Moumoute/script-epitech/installation/.files/.emacs.d/"
+ "/home/cedric/Data/dev_pharmapocket/external/enterprise/products/"
+ "/home/cedric/.emacs.d/"
+ "/root/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "manage.py"
+ "test.lisp"
+ "ubuntu-faded-screen.script"
+ "Makefile"
+ ".Moumoute_emacs"
+ "white_rabbit.c"
+ "for_loop.c"
+ "backtracking_recursion.c"
+ "helm-font.el"
+ "std_comment.el"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/cedric/Emacs_Moumoute/" (22562 10570 676144 951000) "./" "emacs.pdf" "Memacs" "fonts-master/" ".Moumoute_emacs~" "monokai-theme.el" ".Moumoute_emacs" "../" ".emacs.d/" "diff-hl-master.zip" "script-epitech/" "direx-el-master.zip" "fonts-master.zip")
+
+ ("/home/cedric/" (22562 11974 216016 803000) ".face" ".recently-used" "./" ".dir_colors" "Moomoo_Foobar/" ".zcompdump" ".nano/" "PH135_ACTU_Le jour ou.pdf" ".mkshrc" ".zsh_history" "note" ".face.icon" ".zshrc" ".thumbnails/" "Rapport-pharmapocket.odt" ".mydircolors" ".rvm/" ".oracle_jre_usage/" ".adobe/" ".zsh-update" ".zcompdump-cedric-HP-EliteBook-840-G2-5.1.1" ".Moumoute_emacs~" ".zshrc.pre-oh-my-zsh" "Rapport-Pharmacie" ".bashrc" "Emacs_Moumoute/" ".bash_profile" ".oh-my-zsh/" ".selected_editor" ".cups/" "loading1.png" ".kde/" ".gconf/" ".directory" ".Moumoute_emacs" ".macromedia/" ".profile" ".gimp-2.8/" ".dbus/" ".Xauthority" ".zlogin" ".bash_history" "Videos/" "font.png" ".fonts.conf" ".mozilla/" ".config/" ".fonts/" ".gnome2/" ".gnome2_private/" "Desktop/" ".histfile" ".pki/" ".emacs2" ".xsession-errors" ".gksu.lock" "../" ".emacs" "Music/" ".emacs.d/" "note_external" ".cache/" "Note-rapport-stage" ".java/" ".wget-hsts" ".npm/" ".gtkrc-2.0" "..xsession-errors.swp" ".gnupg/" "Pictures/" ".ssh/" ".thunderbird/" "Public/" ".sudo_as_admin_successful" "Data/" ".emacs~" ".local/" ".bash_logout" "Downloads/" ".gitconfig")
+
+ ("/home/cedric/Data/dev_pharmapocket/old_external/external/" (22507 45118 857737 653000) "./" "requirements.txt" ".git/" "settings/" ".gitignore" "../" "manage.py" "enterprise/" "VERSION")
+
+ ("/home/cedric/Data/dev_pharmapocket/old_external/" (22532 34197 77450 562000) "./" "external/" "../")
+
+ ("/home/cedric/Data/dev_pharmapocket/" (22560 35764 474112 544000) "./" "old_assets/" "old_external/" "_pharmapocket_env/" "assets/" "old_website/" "external/" "assets.tar.gz" "jquery-ui-1.12.1/" "../" "website/" "Simple-Wizard-Modal-Plugin-with-jQuery-Bootstrap-Easy-Wizard/" "bootstrap-css.tar.gz")
+
+ ("/home/cedric/Data/language_learning/lisp_and_emacs/lisp/" (22554 59081 817424 174000) "./" "test.lisp" "../")
+
+ ("/home/cedric/Data/language_learning/" (22560 29855 918012 787000) "./" "c++/" "python/" "../" "c/" "java/" "lisp_and_emacs/" "Lua/")
+
+ ("/home/cedric/Data/C++Pool/Day01/ex00/" (22561 41933 750337 165000) "./" "white_rabbit.c~" "white_rabbit.c" "a.out" "../" "#white_rabbit.c#" ".#white_rabbit.c")
+
+ ("/home/cedric/Data/C++Pool/Day01/" (22531 40139 345652 463000) "./" "ex00/" "../")
+
+ ("/home/cedric/Data/" (22538 15766 859458 104000) "dev_pharmapocket/" "./" "C++Pool/" "language_learning/" ".directory" "../")
+
+ ("/home/cedric/.emacs.d/" (22552 31583 632853 725000) "./" "ido.last~" "std.el" ".mc-lists.el" ".emacs.c/" "auto-save-list/" "recentf" ".last-package-update-day" ".emacs_backup" ".myemacs" "ac-comphist.dat" "php-mode.el" "../" "games/" "ido.last" "std_comment.el" "smex-items" "elpa/" "snippets/")
+
+ ("/home/cedric/Downloads/ubuntu-faded-screen/" (22543 13222 379211 672000) "./" "ubuntu9.PNG" "ubuntu6.PNG" "animation.png" "ubuntu1.PNG" "ubuntu-faded-screen.script" "ubuntu25.PNG" "ubuntu26.PNG" "anim-ubuntu-logo2.PNG" "ubuntu24.PNG" "ubuntu14.PNG" "ubuntu30.PNG" "box.png" "ubuntu7.PNG" "ubuntu8.PNG" "ubuntu17.PNG" "ubuntu20.PNG" "ubuntu-faded-screen.script~" "ubuntu23.PNG" "lock.png" "ubuntu28.PNG" "anim-ubuntu-logo.PNG" "ubuntu13.PNG" "ubuntu5.PNG" "bullet.png" "ubuntu15.PNG" "../" "ubuntu10.PNG" "ubuntu3.PNG" "ubuntu29.PNG" "ubuntu21.PNG" "ubuntu-faded-screen.plymouth" "ubuntu2.PNG" "ubuntu19.PNG" "ubuntu27.PNG" "ubuntu22.PNG" "ubuntu18.PNG" "ubuntu12.PNG" "ubuntu4.PNG" "ubuntu16.PNG" "entry.png" "ubuntu11.PNG")
+
+ ("/home/cedric/Downloads/" (22543 17156 283337 169000) "./" "Ring_Of _Color.mp4" "test.swift" "Hydra/" "The.Walking.Dead.S07E01.VOSTFR.HDTV.XviD-ZT.www.Zone-Telechargement.com.avi" "The.Walking.Dead.S07E00.FASTSUB.VOSTFR.HDTV.XviD-ZT.www.Zone-Telechargement.com.avi" ".config/" "../" "ubuntu-faded-screen/")
+
+ ("/usr/share/plymouth/themes/kubuntu-logo/" (22543 15177 433747 515000) "./" "README" "kubuntu-logo.grub" "kubuntu-logo.plymouth" "../" "kubuntu-logo.script" "#kubuntu-logo.script#" "images/")
+
+ ("/usr/share/plymouth/themes/" (22543 28563 324644 504000) "kubuntu-text/" "./" "default.plymouth" "spinfinity/" "script/" "spinner/" "details/" "text/" "tribar/" "solar/" "glow/" "../" "ubuntu-faded-screen/" "text.plymouth" "kubuntu-logo/" "fade-in/" "ubuntu-text/" "dick/")
+
+ ("/usr/share/plymouth/themes/dick/" (22543 28911 605722 503000) "loading23.png" "loading77.png" "./" "loading56.png" "loading71.png" "loading32.png" "loading88.png" "loading14.png" "loading62.png" "loading91.png" "loading8.png" "loading37.png" "loading64.png" "loading65.png" "loading9.png" "loading39.png" "loading80.png" "loading57.png" "loading92.png" "loading51.png" "loading97.png" "loading3.png" "dick.script" "loading84.png" "loading16.png" "loading22.png" "loading43.png" "loading99.png" "loading54.png" "loading46.png" "loading15.png" "loading55.png" "loading48.png" "loading85.png" "loading79.png" "loading5.png" "loading98.png" "loading24.png" "loading53.png" "loading78.png" "loading1.png" "loading21.png" "loading4.png" "loading19.png" "loading67.png" "loading68.png" "loading83.png" "loading74.png" "loading20.png" "loading33.png" "loading10.png" "loading76.png" "loading47.png" "loading28.png" "loading96.png" "font.png" "loading44.png" "loading89.png" "loading18.png" "loading42.png" "loading87.png" "loading61.png" "loading50.png" "loading41.png" "loading73.png" "loading17.png" "loading31.png" "loading6.png" "../" "loading49.png" "loading27.png" "loading34.png" "loading58.png" "loading2.png" "loading36.png" "loading40.png" "loading12.png" "loading86.png" "loading75.png" "loading35.png" "loading95.png" "loading59.png" "loading93.png" "loading11.png" "loading81.png" "dick.script~" "dick.plymouth" "loading45.png" "loading69.png" "loading30.png" "loading60.png" "loading72.png" "loading82.png" "loading90.png" "loading25.png" "loading7.png" "loading63.png" "loading66.png" "loading94.png" "loading52.png" "loading29.png" "loading38.png" "loading26.png" "loading13.png" "loading70.png")
+
+ ("/usr/" (22295 65014 0 0) "./" "src/" "../" "games/" "include/" "share/" "lib/" "sbin/" "bin/" "local/")
+
+ ("/usr/share/" (22542 13996 226668 788000) "sgml/" "mimelnk/" "config.kcfg/" "chromium-browser/" "myspell/" "systemsettings/" "kwincompositing/" "libgphoto2/" "doc-base/" "messageviewer/" "katepart/" "catdoc/" "sysv-rc/" "awk/" "korganizer/" "khotkeys/" "akregator/" "mime/" "kturtle/" "kpackage/" "kmenuedit/" "torbrowser-launcher/" "ufw/" "libaudio2/" "gdb/" "acpi-support/" "appdata/" "gksu/" "farstream/" "apps/" "debhelper/" "ubuntu-release-upgrader/" "kcmkeyboard/" "kcalendar/" "color/" "mysql-common/" "gconf/" "icu/" "kfontinst/" "gcr-3/" "pygtk/" "debconf/" "colord/" "kio_desktop/" "drkonqi/" "python-apt/" "evolution-data-server/" "konqsidebartng/" "linux-sound-base/" "file/" "libsensors4/" "command-not-found/" "gcc-5/" "openal/" "ca-certificates-java/" "kcminput/" "kcontrol/" "kwin/" "help/" "maven-repo/" "libreoffice/" "bash-completion/" "alsa/" "dns/" "kcmkeys/" "sieve/" "GConf/" "directfb-1.2.10/" "os-prober/" "kcm-gtk-module/" "kservicetypes5/" "gnupg2/" "tools/" "konqueror/" "gettext/" "vte/" "kservices5/" "kdevappwizard/" "ImageMagick-6/" "kubuntu-default-settings/" "pkgconfig/" "dict/" "readline/" "locale-langpack/" "themes/" "ksplash/" "icedtea-web/" "grub/" "liblangtag/" "idl/" "purple/" "groff/" "usb_modeswitch/" "et/" "kcmsolidactions/" "libkleopatra/" "unattended-upgrades/" "kaddressbook/" "node-mime/" "im-config/" "npm/" "pulseaudio/" "javascript/" "gnome-2.0/" "enchant/" "doc/" "kio_info/" "QtCurve/" "consoletrans/" "sddm/" "terminfo/" "app-info/" "vim/" "akonadi/" "pam-configs/" "kcmview1394/" "fonts/" "pyshared/" "mime-info/" "knotifications5/" "xml/" "plasmadiscover/" "p11-kit/" "netpbm/" "X11/" "liblouisutdml/" "qalculate/" "apturl/" "foo2zjs/" "python/" "desktop-directories/" "konversation/" "aclocal/" "foo2qpdl/" "tor/" "gettext-0.19.7/" "fontconfig/" "ssl-cert/" "emacs/" "perl5/" "session-migration/" "hunspell/" "solid/" "intltool-debian/" "popularity-contest/" "liblouis/" "bug/" "mysql/" "wallpapers/" "kcm_kscreen/" "applications/" "llvm-3.8/" "sounds/" "ktp-log-viewer/" "hardening-includes/" "kxmlgui5/" "kdm/" "ffmpeg/" "rubygems-integration/" "strigi/" "update-notifier/" "katepart5/" "aspell/" "language-selector/" "hyphen/" "snmp/" "katexmltools/" "plymouth-manager/" "pastebin.d/" "man-db/" "nano/" "kdisplay/" "qt4/" "GeoIP/" "kubuntu-notification-helper/" "remoteview/" "xml-core/" "ppd/" "pixmaps/" "sddm-kcm/" "qtchooser/" "libmessageviewer/" "kdepimwidgets/" "upstart/" "base-passwd/" "clang/" "zsh-antigen/" "tcltk/" "gwenview/" "pnm2ppa/" "systemtap/" "initramfs-tools/" "iptables/" "console-setup/" "keyrings/" "kio_bookmarks/" "importwizard/" "zenity/" "resolvconf/" "kwalletmanager5/" "pkg-config-dpkghook" "icons/" "misc/" "media-player-info/" "kf5/" "gnupg/" "adduser/" "libthai/" "build-essential/" "accounts/" "dictionaries-common/" "librevenge/" "ghostscript/" "kstyle/" "xsessions/" "language-support/" "hal/" "kgamma/" "kmail2/" "postgresql/" "kateproject/" "konsole/" "libdiscover/" "qt5/" "lightdm/" "secureboot/" "consolefonts/" "mythes/" "gimp/" "calendar/" "cdrdao/" "gst-plugins-base/" "zoneinfo/" "polkit-1/" "common-licenses/" "node-gyp/" "hplip/" "python-wheels/" "binfmts/" "dpkg/" "emoticons/" "java/" "gstreamer-1.0/" "terminator/" "locale/" "lintian/" "sgml-data/" "apport/" "djvu/" "ksysguard/" "rsyslog/" "i18n/" "poppler/" "ca-certificates/" "kio_docfilter/" "kcmusb/" "libparse-debianchangelog-perl/" "mozilla/" "korgac/" "tabset/" "dh-python/" "base-files/" "menu/" "dbus-1/" "notificationhelper/" "color-schemes/" "ppp/" "kcm_componentchooser/" "locales/" "perl/" "ubufox/" "gutenprint/" "application-registry/" "distro-info/" "boot-sav/" "kontact/" "package-data-downloads/" "glib-2.0/" "pam/" "grub-gfxpayload-lists/" "gnome-control-center/" "nodejs/" "ieee-data/" "alsa-base/" "kcm_phonon/" "ksmserver/" "libc-bin/" "cups/" "libgksu/" "m17n/" "avahi/" "git-core/" "telepathy/" "knotes/" "postgresql-common/" "gitweb/" "pkg-config-crosswrapper" "vlc/" "boot-sav-extra/" "libexttextcat/" "info/" "dnsmasq-base/" "ubuntu-drivers-common/" "man/" "emacs24/" "kconf_update/" "klettres/" "khelpcenter/" "partitionmanager/" "zsh/" "kde4/" "debianutils/" "discover/" "messagelist/" "language-tools/" "kcalc/" "libwacom/" "templates/" "mobile-broadband-provider-info/" "bluedevilwizard/" "sgml-base/" "plasma/" "systemd/" "software-properties/" "insserv/" "ktelepathy/" "python3/" "plymouth/" "../" "./")
+
+ ("/usr/share/plymouth/" (22487 50413 225953 58000) "./" "themes/" "../" "ubuntu-logo.png")
+
+ ("/media/cedric/2337a639-4d85-4f36-ade6-cdcedffd0cf2/cescut_c/rendu/synthese/palindrome/" (22536 30973 668151 282000) "./" "Makefile" ".#requirement.c" "back_make" "requirement.o" "version.txt" "requirement.c" "include/" "palindrome" "../" "#requirement.c#" "src/" ".git/" "palindrome_backUp/")
+
+ ("/home/cedric/.emacs.d/elpa/git-gutter-20160903.852/" (22523 18347 796614 756000) "./" "git-gutter.el" "git-gutter-autoloads.el~" "git-gutter.elc" "git-gutter-autoloads.el" "../" "git-gutter-pkg.elc" "git-gutter-pkg.el")
+
+ ("/home/cedric/.emacs.d/elpa/" (22529 6773 881589 694000) "pos-tip-20150318.813/" "flycheck-irony-20160317.1536/" "use-package-20160614.803/" "./" "popup-20160709.729/" "ido-yes-or-no-20160217.1617/" "popup-readme.txt" "json-mode-20160803.1606/" "ido-describe-bindings-readme.txt" "fancy-battery-20150101.404/" "helm-fuzzier-20160605.1445/" "expand-region-20160729.131/" "minimap-1.2/" "irony-20160925.1030/" "git-gutter-fringe-20160929.854/" "neotree-20160921.1817/" "flycheck-pos-tip-20160323.129/" "ido-completing-read+-20160623.815/" "use-package-20160815.1137/" "async-20160513.128/" "anzu-20160617.730/" "multiple-cursors-20160719.216/" "angular-snippets-20140513.2223/" "helm-20161010.1043/" "ac-emacs-eclim-20160813.1754/" "epl-20150517.433/" "git-gutter-fringe+-20140729.403/" "ido-vertical-mode-20160429.1037/" "helm-flycheck-20160710.129/" "linum-relative-20160510.118/" "flycheck-20160606.302/" "git-commit-20161009.252/" "neotree-20160306.730/" "helm-flx-20160227.1652/" "ido-at-point-20151021.57/" "common-lisp-snippets-20160531.903/" "diminish-20151215.915/" "header2-20160810.1234/" "with-editor-20161009.917/" "auto-complete-20160827.649/" "helm-swoop-20160619.953/" "seq-2.16/" "dash-20160820.501/" "bind-key-20160227.48/" "helm-core-20161012.1153/" "django-snippets-20131229.811/" "irony-eldoc-20141226.2219/" "async-readme.txt" "airline-themes-20161003.811/" "popup-20160531.425/" "gnupg/" "git-gutter-20160610.852/" "../" "archives/" "flx-20151030.1112/" "smex-20151212.1409/" "git-gutter+-20151204.923/" "json-snatcher-20150511.2047/" "elscreen-20160613.251/" "git-gutter-20160903.852/" "async-20160711.2235/" "json-reformat-20160212.53/" "linum-off-20160217.1337/" "ido-at-point-readme.txt" "powerline-20160702.1931/" "yasnippet-20160924.2001/" "ac-c-headers-20151021.134/" "aggressive-indent-20160608.1625/" "let-alist-1.0.4/" "auto-package-update-20151025.2311/" "flycheck-20161007.427/" "pkg-info-20150517.443/" "git-gutter-fringe-20160520.1656/" "ido-describe-bindings-20160105.53/" "java-snippets-20160626.1952/" "airline-themes-20160203.1510/" "anzu-20160818.619/" "whitespace-cleanup-mode-20150603.447/" "auto-complete-readme.txt" "smart-comment-20160322.1139/" "auto-complete-20160416.604/" "fringe-helper-20140620.1409/" "powerline-20160601.724/" "eclim-20160901.16/" "smartparens-20161014.323/" "helm-smex-20160530.1236/" "ido-ubiquitous-20160623.815/" "dash-20160605.248/" "indent-guide/" "async-20161010.2322/" "s-20160928.636/" "with-editor-20160408.201/" "git-commit-20160519.950/")
+
+ ("/home/cedric/Data/language_learning/lisp_and_emacs/" (22526 26620 560171 992000) "./" "doc/" "lisp/" "emacs_lisp/" "../")
+
+ ("/home/cedric/Data/language_learning/java/" (22532 36330 730641 197000) "./" "#test1.java#" "test1.class" ".#test1.java" "test1.java" "../" "java_tutorial.pdf")
+
+ ("/home/cedric/Data/C++Pool/" (22531 25135 217226 841000) "./" "Day01/" "../")
+
+ ("/home/cedric/Data/language_learning/c/" (22531 35240 264169 671000) "./" "tail_recursive.c" "backtracking_recursion.c" "for_loop.c" "../")
+
+ ("/home/cedric/Data/language_learning/c++/" (22525 58005 551281 889000) "./" "test.cpp" "../" "bin")
+
+ ("/home/cedric/.emacs.d/elpa/helm-20161010.1043/" (22529 1822 598419 707000) "helm-files.elc" "helm-net.el" "helm-command.el" "./" "helm-font.el" "helm-bookmark.el" "helm-grep.el" "helm-misc.el" "helm-easymenu.elc" "helm-config.elc" "helm-grep.elc" "helm-elisp-package.el" "helm-org.elc" "helm-regexp.elc" "helm-id-utils.elc" "helm-color.elc" "helm-tags.elc" "helm-config.el" "helm-eshell.elc" "helm-tags.el" "helm-autoloads.el~" "helm-buffers.el" "helm-dabbrev.elc" "helm-elscreen.el" "helm-adaptive.el" "helm-info.el" "helm-external.elc" "helm-adaptive.elc" "helm-utils.elc" "helm-elisp-package.elc" "helm-elisp.el" "helm-types.elc" "helm-apt.elc" "helm-pkg.el" "helm-net.elc" "helm-files.el" "helm-easymenu.el" "helm-elscreen.elc" "helm-semantic.el" "helm-types.el" "helm-help.el" "helm-eval.elc" "helm-man.elc" "helm-bookmark.elc" "helm-ring.el" "helm-locate.elc" "helm-font.elc" "../" "helm-info.elc" "helm-help.elc" "helm-mode.elc" "helm-buffers.elc" "helm-eshell.el" "helm-command.elc" "helm-elisp.elc" "helm-dabbrev.el" "helm-regexp.el" "helm-utils.el" "helm-apt.el" "helm-semantic.elc" "helm-imenu.el" "helm-man.el" "helm-mode.el" "helm-eval.el" "helm-org.el" "helm-autoloads.el" "emacs-helm.sh" "helm-id-utils.el" "helm-sys.el" "helm-external.el" "helm-misc.elc" "helm-color.el" "helm-ring.elc" "helm-sys.elc" "helm-imenu.elc" "helm-locate.el")
+
+ ("/home/cedric/.emacs.d/elpa/yasnippet-20160924.2001/snippets/c-mode/" (22523 20907 722220 251000) "./" "stdlib" "malloc" "unistd" "union" "stdio" "compile" ".yas-parents" "string" "assert" "printf" "../" "define" "packed")
+
+ ("/home/cedric/.emacs.d/elpa/yasnippet-20160924.2001/snippets/" (22523 20933 441807 629000) "./" "cpp-omnet-mode/" "nsis-mode/" "git-commit-mode/" "text-mode/" "rst-mode/" "makefile-mode/" "lua-mode/" "nix-mode/" "erlang-mode/" "nesc-mode/" "scala-mode/" "haskell-mode/" "applescript-mode/" "groovy-mode/" "cc-mode/" "yaml-mode/" "malabar-mode/" "ned-mode/" "cperl-mode/" "erc-mode/" "csharp-mode/" "python-mode/" "antlr-mode/" "CONTRIBUTORS.txt" "octave-mode/" "fundamental-mode/" "org-mode/" "perl-mode/" "cmake-mode/" "tuareg-mode/" "emacs-lisp-mode/" ".gitignore" "cider-repl-mode" "ensime-mode" "sh-mode/" "web-mode" "faust-mode/" "../" "typerex-mode" "c++-mode/" "dix-mode/" "conf-unix-mode/" "java-mode/" "sql-mode/" "lisp-mode/" "makefile-gmake-mode/" "rename_add_contr.py" "LICENSE" "c-mode/" "nxml-mode/" "js3-mode" "html-mode/" "markdown-mode/" ".nosearch" "udev-mode/" "chef-mode/" "m4-mode/" "latex-mode/" "js-mode/" "README.md" "makefile-automake-mode/" "enh-ruby-mode" "css-mode/" "elixir-mode/" "prog-mode/" "f90-mode/" "snippet-mode/" "makefile-bsdmake-mode/" "ruby-mode/" "go-mode/" "clojure-mode/" "js2-mode" "lisp-interaction-mode/")
+
+ ("/home/cedric/.emacs.d/elpa/yasnippet-20160924.2001/" (22523 20934 357792 982000) "./" "yasnippet.el" "yasnippet-pkg.el" "../" "snippets/" "yasnippet.elc" "yasnippet-autoloads.el~" "yasnippet-autoloads.el")
+
+ ("/home/cedric/Emacs_Moumoute/script-epitech/installation/.files/.emacs.d/" (21980 47985 0 0) "./" "std.el" "../" "std_comment.el")
+
+ ("/home/cedric/Emacs_Moumoute/script-epitech/installation/.files/" (22390 57368 0 0) "./" "ns_auth" "blih" "google.1" "../" ".emacs.d/")
+
+ ("/home/cedric/Emacs_Moumoute/script-epitech/installation/" (21980 47985 0 0) "./" ".files/" "install" "../")
+
+ ("/home/cedric/Emacs_Moumoute/script-epitech/" (21980 47985 0 0) "./" "installation/" "../" "README.md")
+
+ ("/home/cedric/Data/dev_pharmapocket/external/enterprise/products/" (22523 58204 655249 602000) "./" "models.py" "__pycache__/" "../")
+
+ ("/home/cedric/Data/dev_pharmapocket/external/enterprise/" (22507 45186 380635 694000) "./" "surveys/" "utils/" "assets/" "external/" "pharmacies/" "__init__.py" "__pycache__/" "wsgi.py" "accounts/" "../" "api/" "products/" "static/" "website/" "urls.py" "templates/")
+
+ ("/home/cedric/Data/c++/" (22523 31093 26282 86000) "./" "test.cpp" "../" "test.cpp~" "bin")
+
+ ("/home/cedric/.emacs.d/elpa/neotree-20160921.1817/" (22523 18348 648598 935000) "./" "neotree.el" "neotree-pkg.el" "neotree-autoloads.el" "icons/" "../" "neotree.elc" "neotree-autoloads.el~")
+
+ ("/home/cedric/.emacs.d/elpa/flycheck-20161007.427/" (22523 18343 940686 470000) "./" "flycheck-ert.elc" "flycheck-ert.el" "flycheck-buttercup.el" "flycheck-pkg.el" "../" "flycheck.el" "flycheck-autoloads.el~" "flycheck.elc" "flycheck-autoloads.el")
+
+ ("/home/cedric/Data/dev_pharmapocket/external/" (22507 45118 857737 653000) "./" "requirements.txt" ".git/" "settings/" ".gitignore" "../" "manage.py" "enterprise/" "VERSION")
+
+ ("/home/cedric/.oh-my-zsh/themes/" (22506 28108 803606 640000) "tjkirch_mod.zsh-theme" "frontcube.zsh-theme" "kafeitu.zsh-theme" "./" "frisk.zsh-theme" "superjarin.zsh-theme" "dogenpunk.zsh-theme" "amuse.zsh-theme" "gnzh.zsh-theme" "philips.zsh-theme" "dieter.zsh-theme" "nicoulaj.zsh-theme" "sporty_256.zsh-theme" "sonicradish.zsh-theme" "takashiyoshida.zsh-theme" "trapd00r.zsh-theme" "dpoggi.zsh-theme" "Soliah.zsh-theme" "tjkirch.zsh-theme" "kennethreitz.zsh-theme" "jaischeema.zsh-theme" "gozilla.zsh-theme" "risto.zsh-theme" "pure.zsh-theme" "michelebologna.zsh-theme" "wuffers.zsh-theme" "minimal.zsh-theme" "jtriley.zsh-theme" "ys.zsh-theme" "avit.zsh-theme" "smt.zsh-theme" "fox.zsh-theme" "wezm.zsh-theme" "tonotdo.zsh-theme" "jbergantine.zsh-theme" "murilasso.zsh-theme" "simonoff.zsh-theme" "jnrowe.zsh-theme" "xiong-chiamiov-plus.zsh-theme" "lukerandall.zsh-theme" "apple.zsh-theme" "norm.zsh-theme" "fletcherm.zsh-theme" "mgutz.zsh-theme" "darkblood.zsh-theme" "garyblessington.zsh-theme" "jonathan.zsh-theme" "mortalscumbag.zsh-theme" "candy.zsh-theme" "wezm+.zsh-theme" "linuxonly.zsh-theme" "example.zsh-theme" "robbyrussell.zsh-theme" "funky.zsh-theme" "aussiegeek.zsh-theme" "lambda.zsh-theme" "af-magic.zsh-theme" "humza.zsh-theme" "dstufft.zsh-theme" "wedisagree.zsh-theme" "awesomepanda.zsh-theme" "muse.zsh-theme" "bullet-train.zsh-theme~" "macovsky.zsh-theme" "re5et.zsh-theme" "sunrise.zsh-theme" "suvash.zsh-theme" "sunaku.zsh-theme" "zhann.zsh-theme" "essembeh.zsh-theme" "intheloop.zsh-theme" "nanotech.zsh-theme" "blinks.zsh-theme" "pmcgee.zsh-theme" "jispwoso.zsh-theme" "peepcode.zsh-theme" "kolo.zsh-theme" "fino-time.zsh-theme" "obraun.zsh-theme" "half-life.zsh-theme" "crcandy.zsh-theme" "sammy.zsh-theme" "kardan.zsh-theme" "sorin.zsh-theme" "simple.zsh-theme" "gianu.zsh-theme" "miloshadzic.zsh-theme" "rkj-repos.zsh-theme" "flazz.zsh-theme" "alanpeabody.zsh-theme" "bullet-train.zsh-theme" "itchy.zsh-theme" "../" "maran.zsh-theme" "imajes.zsh-theme" "cloud.zsh-theme" "dallas.zsh-theme" "theunraveler.zsh-theme" "macovsky-ruby.zsh-theme" "fwalch.zsh-theme" "fishy.zsh-theme" "kiwi.zsh-theme" "daveverwer.zsh-theme" "mrtazz.zsh-theme" "mira.zsh-theme" "josh.zsh-theme" "agnoster.zsh-theme" "eastwood.zsh-theme" "skaro.zsh-theme" "rkj.zsh-theme" "duellj.zsh-theme" "jreese.zsh-theme" "pygmalion.zsh-theme" "fino.zsh-theme" "gallifrey.zsh-theme" "emotty.zsh-theme" "xiong-chiamiov.zsh-theme" "steeef.zsh-theme" "mh.zsh-theme" "candy-kingdom.zsh-theme" "dst.zsh-theme" "strug.zsh-theme" "bira.zsh-theme" "3den.zsh-theme" "rixius.zsh-theme" "clean.zsh-theme" "agnosterzak.zsh-theme" "kphoen.zsh-theme" "junkfood.zsh-theme" "rgm.zsh-theme" "bureau.zsh-theme" "gentoo.zsh-theme" "nebirhos.zsh-theme" "crunch.zsh-theme" "mikeh.zsh-theme" "cypher.zsh-theme" "adben.zsh-theme" "edvardm.zsh-theme" "terminalparty.zsh-theme" "geoffgarside.zsh-theme" "afowler.zsh-theme" "arrow.zsh-theme" "evan.zsh-theme" "gallois.zsh-theme" "juanghurtado.zsh-theme")
+
+ ("/home/cedric/.oh-my-zsh/" (22506 21631 491401 157000) "./" "plugins/" ".git/" "custom/" "tools/" "themes/" "log/" ".gitignore" "LICENSE.txt" "../" "lib/" "oh-my-zsh.sh" "cache/" "README.md" "templates/")
+
+ ("/bin/" (22506 20333 23359 965000) "./" "uname" "mount" "kill" "systemd-machine-id-setup" "kbd_mode" "dd" "udevadm" "ps" "mt" "getfacl" "dnsdomainname" "fgrep" "lsmod" "findmnt" "ntfs-3g.secaudit" "mountpoint" "ping6" "wdctl" "ls" "zcat" "dash" "ntfsfallocate" "false" "ntfsfix" "mv" "touch" "gunzip" "mkdir" "readlink" "umount" "nc.openbsd" "grep" "netcat" "chacl" "bzcat" "mktemp" "kmod" "ntfscmp" "systemd-escape" "date" "bzcmp" "egrep" "ntfs-3g" "systemctl" "ntfswipe" "setfont" "ntfstruncate" "zegrep" "ntfsmove" "systemd-tty-ask-password-agent" "znew" "systemd-ask-password" "setfacl" "chown" "which" "fusermount" "ping" "ulockmgr_server" "sh" "mknod" "sed" "vmmouse_detect" "tar" "systemd-hwdb" "rmdir" "whiptail" "systemd-inhibit" "bzgrep" "stty" "bzfgrep" "less" "fgconsole" "nisdomainname" "ypdomainname" "login" "tempfile" "zcmp" "echo" "busybox" "ntfsls" "pwd" "open" "lowntfs-3g" "cp" "rm" "nano" "ntfscluster" "df" "openvt" "chvt" "su" "rzsh" "bzip2recover" "gzexe" "mt-gnu" "dir" "lessecho" "bzmore" "bzless" "zforce" "lessfile" "loginctl" "gzip" "sh.distrib" "setupcon" "ntfsinfo" "lesspipe" "bash" "lesskey" "../" "zless" "zmore" "sync" "pidof" "zsh5" "dmesg" "bzegrep" "bzexe" "ntfs-3g.usermap" "zfgrep" "bunzip2" "journalctl" "tailf" "ip" "more" "bzip2" "uncompress" "ntfscat" "cat" "ntfs-3g.probe" "true" "loadkeys" "vdir" "sleep" "run-parts" "chgrp" "ed" "systemd-notify" "systemd-tmpfiles" "cpio" "efibootmgr" "red" "dumpkeys" "hciconfig" "netstat" "networkctl" "hostname" "zgrep" "zsh" "rbash" "rnano" "domainname" "bzdiff" "chmod" "fuser" "ss" "ln" "systemd" "lsblk" "static-sh" "zdiff" "unicode_start" "nc" "plymouth")
+
+ ("/home/" (22486 56093 346242 291000) "./" ".directory" "cedric/" "../")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

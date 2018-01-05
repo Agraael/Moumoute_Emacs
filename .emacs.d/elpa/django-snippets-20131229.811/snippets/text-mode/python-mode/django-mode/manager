@@ -1,0 +1,8 @@
+# -*- coding: utf-8 -*-
+# key: manager
+# name: manager
+# contributor: Brandon Height <bmheight@gmail.com>
+# --
+class ${1:MyModelManager}(models.Manager):
+      def get_query_set(self):
+          return super(${1:MyModelManager}, self).get_query_set().filter()

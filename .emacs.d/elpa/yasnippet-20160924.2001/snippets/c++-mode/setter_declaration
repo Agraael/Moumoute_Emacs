@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: setter_declaration
+# key: set
+# --
+void set${1:name}(${2:type});
+$0

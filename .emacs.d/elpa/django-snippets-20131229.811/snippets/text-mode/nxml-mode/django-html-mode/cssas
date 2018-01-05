@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+# key: cssas
+# name: cssas
+# contributor: MyFreeWeb
+# --
+{% assets "${1:css_main}" %}<link rel="stylesheet" type="text/css" media="${2:screen}" href="{{ ASSET_URL }}" />{% endassets %}
