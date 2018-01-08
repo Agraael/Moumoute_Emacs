@@ -277,6 +277,9 @@
 (defun c-mode-flycheck-gcc ()
   (flycheck-select-checker 'c/c++-gcc))
 
+(setq flycheck-gcc-language-standard "c++11")
+(setq flycheck-clang-language-standard "c++11")
+
 (global-flycheck-mode t)
 
 ;; (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -298,8 +301,6 @@
   )
 
 (global-set-key (kbd "<f9>") 'flycheck-toggle)
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
-(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "c++11")))
 
 ;;end
 
