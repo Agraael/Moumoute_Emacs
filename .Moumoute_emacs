@@ -112,6 +112,9 @@
     (load-file (concat HOME "/monokai-theme.el")))
 ;;end
 
+(if (file-exists-p (concat HOME "/.emacs.d/highlight-80.el"))
+    (load-file (concat HOME "/.emacs.d/highlight-80.el")))
+
 (require 'cc-mode)
 ;; chargement .myemacs
 (if (file-exists-p (concat HOME "/.emacs.d/myemacs.el"))
@@ -119,7 +122,9 @@
 ;; end
 
 
-(require 'linum-off)
+
+
+;; (require 'linum-off)
 (global-linum-mode t)
 
 ;; petit plus
@@ -427,7 +432,7 @@
 
 (global-set-key [f10] 'neotree-toggle)
 (custom-set-faces
- '(my-loong-line-face ((((class color)) (:foreground "color-165" :bold bold))) t)
+ '(my-long-line-face ((((class color)) (:foreground "color-165" :bold bold))) t)
  '(my-tab-face ((((class color)) (:foreground "color-234" :weight bold :underline t))) t)
  '(my-trailing-space-face ((((class color)) (:background "color-206"))) t)
  '(neo-dir-link-face ((t (:foreground "blue"))))

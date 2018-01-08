@@ -62,10 +62,12 @@
 (add-hook 'shell-mode-hook 'set-key-to-bottom)
 
 ;; Show tabs and too long lines
-(custom-set-faces
- '(my-tab-face ((((class color)) (:foreground "color-238" :weight bold :underline t))) t)
- '(my-trailing-space-face ((((class color)) (:background "color-206"))) t)
- '(my-loong-line-face ((((class color)) (:foreground "color-165"))) t))
+
+;; (custom-set-faces
+;;  '(my-tab-face ((((class color)) (:foreground "color-238" :weight bold :underline t))) t)
+;;  '(my-trailing-space-face ((((class color)) (:background "color-206"))) t)
+;;  '(my-long-line-face ((((class color)) (:foreground "color-165"))) t))
+
 ;; les couleur sont remodifié dans .Moumoute_emacs ligne 465
 
 
@@ -75,21 +77,32 @@
 				 ("\t+" (0 'my-tab-face append))
 				 )))
 
-(defvar long_line_var 0 "variable pour toggle on off l'affichage des lignes trop longue")
+;; a refaire avec la bonne regexp -> done dans le ficher highlight-80
 
-(defun long_line_toggle () "toggle long line keyword on the buffer(nil) or mode"
-       (interactive)
-       (if (= long_line_var 0)
-	   (font-lock-add-keywords nil '(("^.\\{81\\}\\(.+\\)$" (1 'my-loong-line-face append))))
-	 (font-lock-remove-keywords nil '(("^.\\{81\\}\\(.+\\)$" (1 'my-loong-line-face append))))
-	 )
-       (font-lock-fontify-buffer)
-       (if (= long_line_var 0)(setq long_line_var 1)(setq long_line_var 0))
-       (if (= long_line_var 0)(message "Long_line_mode on")(message "Long_line_mode off"))
-       )
+;; (defvar 'long_line_var 1 "variable pour toggle on off l'affichage des lignes trop longue")
+;; (setq long_line_var 1)
+
+;; (defun long_line_toggle () "toggle long line keyword on the buffer(nil) or mode"
+;;        (interactive)
+;;        (if (= long_line_var 1)
+;; 	   (font-lock-add-keywords nil '(("^.\\{80\\}\\(.+\\)$" (1 'my-long-line-face append))))
+;; 	 (font-lock-remove-keywords nil '(("^.\\{80\\}\\(.+\\)$" (1 'my-long-line-face append))))
+;; 	 )
+;;        (font-lock-fontify-buffer)
+;;        (if (= long_line_var 0)(setq long_line_var 1)(setq long_line_var 0))
+;;        (if (= long_line_var 0)(message "Long_line_mode off")(message "Long_line_mode on"))
+;;        )
 
 ;;(font-lock-remove-keywords)
-(global-set-key (kbd "<f2>") 'long_line_toggle)
+(global-set-key (kbd "<f2>") 'highlight-80+-mode)
+
+;; whitespace-line-colunm variable du nombre de lig
+;; (global-set-key (kbd "<f2>") 'whitespace-mode)
+
+;; (require 'whitespace)
+;; (global-whitespace-mode t)
+;; (setq whitespace-line-column 120)
+;; (setq whitespace-global-modes '(c-mode c++-mode))
 
 (cc-mode-add-keywords 'c-mode)
 (cc-mode-add-keywords 'php-mode)
