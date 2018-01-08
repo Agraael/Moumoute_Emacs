@@ -277,8 +277,6 @@
 (defun c-mode-flycheck-gcc ()
   (flycheck-select-checker 'c/c++-gcc))
 
-(setq flycheck-gcc-language-standard "c++11")
-(setq flycheck-clang-language-standard "c++11")
 
 (global-flycheck-mode t)
 
@@ -301,6 +299,10 @@
   )
 
 (global-set-key (kbd "<f9>") 'flycheck-toggle)
+
+(customize-set-variable 'flycheck-gcc-language-standard "c++11")
+(customize-set-variable 'flycheck-clang-language-standard "c++11")
+(customize-set-variable 'flycheck-cppcheck-standards "c++11")
 
 ;;end
 
