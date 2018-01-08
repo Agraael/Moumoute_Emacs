@@ -298,7 +298,7 @@
   )
 
 (global-set-key (kbd "<f9>") 'flycheck-toggle)
-
+(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11")))
 
 ;;end
 
