@@ -5,7 +5,7 @@
 ## Login   <cedric@epitech.eu>
 ##
 ## Started on  Thu Nov 10 20:05:45 2016 Cedric
-## Last Update Thu Apr  6 11:34:30 2017 Kraken
+## Last update Tue Jan  9 15:39:08 2018 vincent
 ##
 
 
@@ -26,19 +26,27 @@ Usage:
      Memacs [Memacs Options] [Files] [Emacs Options]
 
 Options:
-    -h, --melp       This help menu of Memacs. For emacs help use -n and --help
-                     and for emacsclient help just --help
-    -r --runserver      Start Moumoute_emacs Server in the background without opening a Client
-    -n, --noserve    Lauching a Moumoute_emacs non client
-    -s, --stopserver Stop Moumoute_emacs Server Warnning ! use save-some-buffer (C-x s) before
-    --just_sauce	     Use this in case of bug emergency !!!
-    --raw_sauce              This is meant for debug , not for you !!!
+    -h, --melp		This help menu of Memacs. For emacs help use -n and --help
+			and for emacsclient help just --help
+    -r --runserver	Start Moumoute_emacs Server in the background without opening a Client
+    -n, --noserve	Lauching a Moumoute_emacs non client
+    -s, --stop		Gracefully stops Moumoute_server. This should save your files first (pending for test).
+    -k, --kill		Kills Moumoute_server Warnning : This will not save files. Prefer -s if possible.
+    --just_sauce	Use this in case of bug emergency !!!
+    --raw_sauce		This is meant for debug , not for you !!!
 "
 
 
 case "$1" in
 
     -s|--stop) if [ -e /tmp/emacs$USERID/Moumoute_server ]
+	       then
+		   echo "Stoping Moumoute_emacs Server !" ; emacsclient -s Moumoute_server --eval "(save-buffers-kill-emacs)(shutdown-emacs-server)" ; exit 1
+	       else
+		   echo "No Moumoute_emacs Server !" ; exit 1
+	       fi ;;
+
+    -k|--kill) if [ -e /tmp/emacs$USERID/Moumoute_server ]
 	       then
 		   echo "Stoping Moumoute_emacs Server !" ; emacsclient -s Moumoute_server --eval "(kill-emacs)" ; exit 1
 	       else
@@ -62,6 +70,7 @@ case "$1" in
 		    else
 			echo "Moumoute_emacs Server is already running !" ; exit 1
 		    fi;;
+    --version) cat $MOME/.version;;
 
     *) if [ ! -e /tmp/emacs$USERID/Moumoute_server ]
        then
