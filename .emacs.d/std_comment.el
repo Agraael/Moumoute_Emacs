@@ -12,7 +12,7 @@
 
 (setq std-c-alist               '( (cs . "/*") (cc . "** ") (ce . "*/") )
       std-css-alist             '( (cs . "/*") (cc . "** ") (ce . "*/") )
-      std-cpp-alist             '( (cs . "//") (cc . "// ") (ce . "//") )
+      std-cpp-alist             '( (cs . "/*") (cc . "** ") (ce . "*/") )
       std-pov-alist             '( (cs . "//") (cc . "// ") (ce . "//") )
       std-java-alist            '( (cs . "//") (cc . "// ") (ce . "//") )
       std-latex-alist           '( (cs . "%%") (cc . "%% ") (ce . "%%") )

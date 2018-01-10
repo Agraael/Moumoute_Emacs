@@ -2,5 +2,5 @@
 # name: getter_declaration
 # key: get
 # --
-${1:type} get${2:name}() const;
+${1:type} get${2:Name$(upfirst yas-text)}() const;
 $0

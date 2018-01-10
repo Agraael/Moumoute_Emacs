@@ -16,8 +16,7 @@
 # 2. https://en.wikipedia.org/wiki/Rule_of_three_%28C%2B%2B_programming%29#Example_in_C.2B.2B
 # 3. http://stackoverflow.com/a/4782927
 # --
-class ${1:Name}
-{
+class ${1:Name} {
 public:
 ${2:  ${3://! Default constructor
   }${1:$(yas-c++-class-name yas-text)}()${4:;$(yas-c++-class-method-declare-choice)}

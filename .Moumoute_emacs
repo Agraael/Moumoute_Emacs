@@ -97,6 +97,9 @@
 
 ;; alors attention c'est pas la les header de base , ils ont été un peu corrigé et modifier
 
+(if (file-exists-p (concat HOME "/.emacs.d/snippets_func.el"))
+    (load-file (concat HOME "/.emacs.d/snippets_func.el")))
+
 (if (file-exists-p (concat HOME "/.emacs.d/std.el"))
     (load-file (concat HOME "/.emacs.d/std.el")))
 (if (file-exists-p (concat HOME "/.emacs.d/std_comment.el"))
@@ -269,15 +272,6 @@
 (global-set-key (kbd "<f8>") 'global-flycheck-mode)
 
 
-(add-hook 'c-mode-hook 'c-mode-flycheck-gcc)
-(defun c-mode-flycheck-gcc ()
-  (flycheck-select-checker 'c/c++-gcc))
-
-(add-hook 'c++-mode-hook 'c-mode-flycheck-gcc)
-(defun c-mode-flycheck-gcc ()
-  (flycheck-select-checker 'c/c++-gcc))
-
-
 (global-flycheck-mode t)
 
 ;; (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -302,7 +296,7 @@
 
 (customize-set-variable 'flycheck-gcc-language-standard "c++11")
 (customize-set-variable 'flycheck-clang-language-standard "c++11")
-(customize-set-variable 'flycheck-cppcheck-standards "c++11")
+;; (customize-set-variable 'flycheck-cppcheck-standards "c++11")
 
 ;;end
 
@@ -515,22 +509,22 @@
 ;; ;;TODO: gros putain de temps de chargement avec ce mode , je dois revoir son implementation
 
 
-(autoload 'dired-async-mode "dired-async.el" nil t)
-(dired-async-mode 1)
+;; (autoload 'dired-async-mode "dired-async.el" nil t)
+;; (dired-async-mode 1)
 
-(require 'helm-config)
-(helm-mode 0)
-;; better use for devellopement of Moumoute emacs
-;; (global-set-key (kbd "M-x") 'helm-M-x)
+;; (require 'helm-config)
+;; (helm-mode 0)
+;; ;; better use for devellopement of Moumoute emacs
+;; ;; (global-set-key (kbd "M-x") 'helm-M-x)
 
-(helm-autoresize-mode t)
-(setq helm-autoresize-max-height 25)
-(setq helm-autoresize-min-height 25)
+;; (helm-autoresize-mode t)
+;; (setq helm-autoresize-max-height 25)
+;; (setq helm-autoresize-min-height 25)
 
-(set-face-attribute 'helm-selection t
-		    :background "color-235"
-		    :foreground "color-160"
-		    :bold t)
+;; (set-face-attribute 'helm-selection t
+;; 		    :background "color-235"
+;; 		    :foreground "color-160"
+;; 		    :bold t)
 
 ;;; end
 

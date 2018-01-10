@@ -110,6 +110,7 @@
 (cc-mode-add-keywords 'python-mode)
 (cc-mode-add-keywords 'perl-mode)
 (cc-mode-add-keywords 'c++-mode)
+
 (add-to-list 'auto-mode-alist (cons "\\.hpp\\'" 'c++-mode))
 (add-to-list 'auto-mode-alist (cons "\\.cpp\\'" 'c++-mode))
 (cc-mode-add-keywords 'emacs-lisp-mode)

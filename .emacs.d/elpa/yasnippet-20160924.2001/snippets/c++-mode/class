@@ -2,7 +2,7 @@
 # name: class
 # key: cls
 # --
-class ${1:Name}{
+class ${1:Name} {
 public:
    ${1:$(yas/substr yas-text "[^: ]*")}();
    ${1:$(yas/substr yas-text "[^: ]*")}(${1:$(yas/substr yas-text "[^: ]*")} const&);
