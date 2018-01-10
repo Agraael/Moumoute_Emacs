@@ -14,7 +14,7 @@
 - [ ] Memacs theme system
 - [ ] "Norminette" in Memacs and customizable
 
-##Important
+## Important
 - [ ] GET MORE USERS !!!!!
 - [ ] MAKE MONEY !!!!!
 - [ ] GET BITCHES
