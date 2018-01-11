@@ -58,7 +58,7 @@
       (append load-path (list my-elmode-dir)))
 
 ;; mode debug
-(setq debug-on-error t)
+;; (setq debug-on-error t)
 
 ;;(add-to-list 'load-path "/usr/share/emacs/")
 
