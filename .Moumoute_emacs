@@ -16,7 +16,7 @@
 
 (let ((default-directory (concat HOME "/.emacs.d/"))
       (normal-top-level-add-subdirs-to-load-path)))
-(setq default-directory (concat HOME "/.emacs.d/"))
+;; (setq default-directory (concat HOME "/.emacs.d/"))
 
 (setq package-user-dir (concat HOME "/.emacs.d/elpa/"))
 (package-initialize)
