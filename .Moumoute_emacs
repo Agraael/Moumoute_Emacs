@@ -10,8 +10,16 @@
 
 ;; je devrais faire un MAN pour expliquer Moumoute emacs
 
+(defvar HOME (getenv "MOME"))
 
 (require 'package) ;; You might already have this line
+
+(let ((default-directory (concat HOME "/.emacs.d/"))
+      (normal-top-level-add-subdirs-to-load-path)))
+(setq default-directory (concat HOME "/.emacs.d/"))
+
+(setq package-user-dir (concat HOME "/.emacs.d/elpa/"))
+(package-initialize)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 (when (< emacs-major-version 24)
@@ -22,16 +30,14 @@
 (add-to-list 'package-archives
 	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-(defvar HOME (getenv "MOME"))
-
 (defun add-to-list-with-subdirs (base exclude-list include-list)
   (dolist (f (directory-files base))
-	(let ((name (concat base "/" f)))
-	  (when (and (file-directory-p name)
-				 (not (member f exclude-list)))
-		(add-to-list 'load-path name)
-		(when (member f include-list)
-		  (add-to-list-with-subdirs name exclude-list include-list)))))
+    (let ((name (concat base "/" f)))
+      (when (and (file-directory-p name)
+		 (not (member f exclude-list)))
+	(add-to-list 'load-path name)
+	(when (member f include-list)
+	  (add-to-list-with-subdirs name exclude-list include-list)))))
   (add-to-list 'load-path base))
 
 ;; (setq user-emacs-directory (file-truename (concat HOME "/.emacs.d/")))
@@ -52,11 +58,9 @@
       (append load-path (list my-elmode-dir)))
 
 ;; mode debug
-;; (setq debug-on-error t)
+(setq debug-on-error t)
 
 ;;(add-to-list 'load-path "/usr/share/emacs/")
-(let ((default-directory (concat HOME "/.emacs.d/"))
-	  (normal-top-level-add-subdirs-to-load-path)))
 
 (add-to-list-with-subdirs HOME '("." "..") '("vendor" "my-lisp"))
 (add-to-list-with-subdirs (concat HOME "/.emacs.d") '("." "..") '("vendor" "my-lisp"))
@@ -294,9 +298,14 @@
 
 (global-set-key (kbd "<f9>") 'flycheck-toggle)
 
-(customize-set-variable 'flycheck-gcc-language-standard "c++11")
-(customize-set-variable 'flycheck-clang-language-standard "c++11")
-;; (customize-set-variable 'flycheck-cppcheck-standards "c++11")
+;; (customize-set-variable 'flycheck-gcc-language-standard "c++11")
+;; (customize-set-variable 'flycheck-clang-language-standard "c++11")
+
+(add-hook 'c-mode-hook  (lambda () (customize-set-variable 'flycheck-clang-language-standard nil)))
+(add-hook 'c-mode-hook  (lambda () (customize-set-variable 'flycheck-gcc-language-standard nil)))
+(add-hook 'c++-mode-hook  (lambda () (customize-set-variable 'flycheck-clang-language-standard "c++11")))
+(add-hook 'c++-mode-hook  (lambda () (customize-set-variable 'flycheck-gcc-language-standard "c++11")))
+
 
 ;;end
 
@@ -579,20 +588,16 @@
 ;; seulement pour la prod et moi , doit etre désactivé en publication
 ;;(auto-package-update-at-time "08:00")
 
-
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
+;; (add-hook 'c++-mode-hook 'irony-mode)
+;; (add-hook 'c-mode-hook 'irony-mode)
+;; (add-hook 'objc-mode-hook 'irony-mode)
 
 ;; replace the `completion-at-point' and `complete-symbol' bindings in
 ;; irony-mode's buffers by irony-mode's function
-(defun my-irony-mode-hook ()
-  (define-key irony-mode-map [remap completion-at-point]
-    'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-    'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;; (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+
 
 
 
