@@ -122,6 +122,12 @@
 (if (file-exists-p (concat HOME "/.emacs.d/highlight-80.el"))
     (load-file (concat HOME "/.emacs.d/highlight-80.el")))
 
+(if (file-exists-p (concat HOME "/.emacs.d/c++font-lock.el"))
+    (load-file (concat HOME "/.emacs.d/c++font-lock.el")))
+
+(modern-c++-font-lock-global-mode t)
+
+
 (require 'cc-mode)
 ;; chargement .myemacs
 (if (file-exists-p (concat HOME "/.emacs.d/myemacs.el"))
@@ -375,17 +381,27 @@
 
 ;; change la taille des tab et decalage de base
 
-;; (setq-default tab-width 4) ;; change la taille des tabs
+(setq python-indent 4) ;; change la taille des tabs
 ;; (setq-default c-basic-offset 4) ;;indentation par defaut sur le mode c / c++ / java
 (setq-default c-basic-offset 8
-		  tab-width 8
-		  indent-tabs-mode t)
+	      tab-width 8
+	      indent-tabs-mode t)
+
+;; (setq-default indent-tabs-mode t)
 
 
+;; python tab de 8 a laplace d'espace -> j'essaye la norme pylint
+(add-hook 'python-mode-hook
+	  (lambda ()
+	    (setq indent-tabs-mode nil)
+	    (setq python-indent 4)
+	    (setq tab-width 4))
+	  (tabify (point-min) (point-max)))
 
 (global-aggressive-indent-mode)
 (add-hook 'emacs-lisp-mode-hook #'aggressive-indent-mode)
 (add-hook 'css-mode-hook #'aggressive-indent-mode)
+(add-hook 'python-mode-hook #'aggressive-indent-mode)
 (global-set-key (kbd "<f12>") 'aggressive-indent-mode)
 ;;end not used
 
