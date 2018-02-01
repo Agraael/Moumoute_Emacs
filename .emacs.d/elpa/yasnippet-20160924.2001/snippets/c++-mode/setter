@@ -2,7 +2,7 @@
 # name: setter
 # key: set
 # --
-void ${1:Class}::set${2:name$(upfirst yas-text)}(${3:type} new_$2)
+void ${1:Class}::set${2:Name$(upfirst yas-text)}(${3:type} new_${2:$(downfirst yas-text)})
 {
- this->_${2:$(downfirst yas-text)} = ne_${2:$(downfirst yas-text)};
+ this->_${2:$(downfirst yas-text)} = new_${2:$(downfirst yas-text)};
 }

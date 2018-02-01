@@ -15,7 +15,6 @@ export MOME=`dirname "$BASH_SOURCE"`
 MAIN_EL="$MOME/.Moumoute_emacs"
 
 
-
 OPTIONS="Description:
      Memacs open a Moumoute_emacs Client connected to a Local Moumoute Server
      If the Moumoute Server doesn't exist, It is created by Memacs

@@ -1,4 +1,3 @@
-1;2802;0c1;2802;0c;;
 ;; .emacs for moumoute_emacs in /home/cescut_c
 ;;
 ;; Made by CESCUTTI Cédric
@@ -126,7 +125,6 @@
     (load-file (concat HOME "/.emacs.d/c++font-lock.el")))
 
 (modern-c++-font-lock-global-mode t)
-
 
 (require 'cc-mode)
 ;; chargement .myemacs
@@ -309,8 +307,8 @@
 
 (add-hook 'c-mode-hook  (lambda () (customize-set-variable 'flycheck-clang-language-standard nil)))
 (add-hook 'c-mode-hook  (lambda () (customize-set-variable 'flycheck-gcc-language-standard nil)))
-(add-hook 'c++-mode-hook  (lambda () (customize-set-variable 'flycheck-clang-language-standard "c++11")))
-(add-hook 'c++-mode-hook  (lambda () (customize-set-variable 'flycheck-gcc-language-standard "c++11")))
+(add-hook 'c++-mode-hook  (lambda () (customize-set-variable 'flycheck-clang-language-standard "c++14")))
+(add-hook 'c++-mode-hook  (lambda () (customize-set-variable 'flycheck-gcc-language-standard "c++14")))
 
 
 ;;end

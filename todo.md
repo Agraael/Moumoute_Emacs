@@ -1,7 +1,7 @@
 # To do
 - [X] Put Memacs on github
 - [ ] Fix Memacs commands
-- [ ] Memacs script into python3
+- [?] Memacs script into python3
 - [ ] Memacs update system
 - [ ] Epitech Norm function -> 20 line limit
 - [ ] Make README
@@ -19,6 +19,8 @@
 
 ## Fix
 - [ ] Autocompletion 'endline' when 'ENTER' is pressed and one completion is allaready finished
+- [ ] Corriger la completion du smex et la creation de ficher
+- [ ] Test de variables mouse-wheel-mode et scroll-bar-mode : semble bugger sur VM
 
 ## Important
 - [ ] GET MORE USERS !!!!!

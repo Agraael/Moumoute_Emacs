@@ -2,5 +2,5 @@
 # name: setter_declaration
 # key: set
 # --
-void set${1:name$(upfirst yas-text}(${2:type});
+void set${1:name$(upfirst yas-text)}(${2:type});
 $0
