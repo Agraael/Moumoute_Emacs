@@ -11,7 +11,7 @@ But you realy like Emacs enviroment , but you don't know how to customize yours 
 ##### GUESS WHAT ????? I GOT SOMETHING FOR YOU !!
 
 As an Epitech student you have to improve your skills but also your workspace and tools. \
-That's why i made this tiny project , to help you in studies , to help people in need ! \
+That's why i made this tiny project , to help you in studies , to help people in need ! 
 
 ### Features
 
@@ -39,6 +39,7 @@ In future versions the installation will be more complex.
 ### Requirement
 
 - Emacs 24.5 or above
+- clang
 - cppcheck
 
 ### Usage
@@ -76,7 +77,7 @@ But what is this Mode u may ask .\
 
 Well it's pretty simple , **Memacs** use Daemon feature since emacs 23  \
 to create a local server to be the root of your emacs session.\
-All you have to know is that all buffers will be stocked in that server.\
+All you have to know is that all buffers will be stocked in that server.
 
 More information here -> [Emacs as Daemon](https://www.emacswiki.org/emacs/EmacsAsDaemon)
 
@@ -87,7 +88,7 @@ Memacs create it's own server named Moumoute_server , so it wont disturb your cl
 ```
 ./Memacs -n or ./Memacs -n file.c ...
 ```
-using  -n  , will start a local Moumoute_Emacs instance , just like Emacs \
+using  -n  , will start a local Moumoute_Emacs instance , just like Emacs
 ```
 ./Memacs -k or ./Memacs -s
 ```
@@ -110,7 +111,7 @@ Sometimes the **Moumoute_server** can be corrupted , (idk know why) and you wont
 
 Haaaaaa the most important part !!!!\
 Here i will list and explain all command usefull for you in Moumoute Emacs\
-Some are the same in emacs , some are modified , some are new.\
+Some are the same in emacs , some are modified , some are new.
 
 first a little reminder about emacs command 
 - **M-** stand for **Alt** key
@@ -118,6 +119,8 @@ first a little reminder about emacs command
 -  those command are meant for AZERTY , sry  guys i will and QWERTY version later
 -  **C-c k** (Ctrl + c then c) will display the list of all command in **Memacs**
 -  use **C-g** to cancel any command
+- **C-s** search command , repeat **C-s** to switch to the next match
+- **C-_** undo command
 
 ##### - noice command
 - **F2** -> show the 80 col limit
@@ -130,7 +133,7 @@ first a little reminder about emacs command
 Well **ido-mode** , is a display module, for commands and selection in **Memacs**\
 check this -> [InteractivelyDoThings](https://www.emacswiki.org/emacs/InteractivelyDoThings) \
 Ido provide autocompletion, so you have to press **TAB** for it\
-_(because it will still open the classic completion windows, i need to fix this)_ \
+_(because it will still open the classic completion windows, i need to fix this)_ 
 
 when using ido to find a file to open , u can navigate through directory by pressing **ENTER** on a directory \
 or **BACKSPACE** when the last character of the **PATH** is **\\** .
@@ -142,8 +145,9 @@ By default auto-completion is set as **True**
 
 ##### - Windows, screen and buffer commands
 
-- **C-c C-b** -> use it to switch buffer with ido
+- **C-x C-b** -> use it to switch buffer with ido
 - **C-x C-f** -> open file in new buffer (with ido)
+- **C-x k** -> select a buffer to kill
 - **C-x 1** -> kill buffer and current window
 - **C-x 2** -> choose a file to open in a new windows below the current one and switch to it
 - **C-x 3** -> same thing but on the right
@@ -163,7 +167,7 @@ if you are on Terminator it's **Alt+Maj + arrow**
 ##### - Query replace
 
 - **M-%** -> classic command for query
-- **M-µ** -> query replace on the word at the cursor \
+- **M-µ** -> query replace on the word at the cursor
 
 after typing the replace word use
 - **y** to replace one
@@ -174,13 +178,13 @@ after typing the replace word use
 
 - **F8** -> activate/deactivate code compilation and analysis \
 by default this option is set to **True**
-- **f9** open/close the error/warning window \
+- **F9** open/close the error/warning window \
 **Error** in **RED**\
 **Warning** in **YELLOW** \
 **Suggestion** in **BLUE**
 
 use the error window to see from witch checker the error come from \
-by default for c/c++ it use clang/clang++ -std=c++14 and cppcheck
+by default for **c/c++** i use **clang/clang++ -std=c++14** and **cppcheck**
 
 ##### - aggressive indentation
 
@@ -189,7 +193,7 @@ Set as **True** by default
 
 ##### - directory tree
 - **F10** -> open/close directory tree window \
-allow you to move through your files and directory like in other Editors\
+allow you to move through your files and directory like in other Editors
 
 some time **F10** is used by your terminal to toggle the menu bar \
 those command only work inside the directory tree window

@@ -184,7 +184,7 @@
 (ido-ubiquitous-mode 1)
 
 (global-set-key (kbd "C-c k") 'ido-describe-bindings) ;; aide sur les commandes
-(global-set-key (kbd "C-c C-b") 'ido-switch-buffer)
+(global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 ;; bofbof le yes no
 (require 'ido-yes-or-no)
 (ido-yes-or-no-mode 1)
