@@ -45,7 +45,7 @@ In future versions the installation will be more complex.
 - **clang °**
 - **cppcheck °**
 
-**°** -> provided in installation script
+**°** -> provided with --install (apt-get or yum)
 
 ### Usage
 ```

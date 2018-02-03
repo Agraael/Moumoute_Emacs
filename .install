@@ -7,7 +7,7 @@
 
 declare -A osInfo;
 
-REQUIREMENT="python3 cppcheck clang"
+REQUIREMENT="cppcheck clang"
 
 OKBLUE='\033[94m'
 OKGREEN='\033[92m'
@@ -23,7 +23,7 @@ osInfo[/etc/redhat-release]="yum install"
 # osInfo[/etc/SuSE-release]=zypp
 osInfo[/etc/debian_version]="apt-get install"
 
-PACKAGE_MANAGER=""
+PACKAGE_MANAGER="no"
 
 for f in ${!osInfo[@]}
 do
@@ -43,13 +43,20 @@ else
 fi
 
 if [ "$INTERNET" = "no" ]; then
-    printf "$FAIL$BOLD No internet connection, we can't install/upgrade the required packages$ENDC\n"
+    printf "$FAIL$BOLD No internet connection, Memacs can't install/upgrade the required packages$ENDC\n"
     printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"
     exit 1;
 fi
 
-printf "$OKBLUE$BOLD The following packages will be installed :$ENDC\n$BOLD $WARNING $REQUIREMENT $ENDC\n"
-printf "Root access will be needed, do you want to continue ? "
+if [ "$PACKAGE_MANAGER" = "no" ];then
+    printf "$FAIL$BOLD sry Memacs do not provide automatic installation on your distribution$ENDC\n"
+    printf "You must install packages manually :\n$BOLD$WARNING $REQUIREMENT $ENDC\n"
+    printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"
+    exit 1;
+fi
+
+printf "The following packages will be installed :$ENDC\n$BOLD$WARNING $REQUIREMENT $ENDC\n"
+printf "Root access will be needed, do you want to continue ?"
 printf "$OKGREEN$BOLD [yes/no] $ENDC\n"
 
 read choice
