@@ -41,7 +41,7 @@ In future versions the installation will be more complex.
 ### Requirement
 
 - **Emacs 24 to Emacs 25**
-- **python3 °**
+- **python3**
 - **pip3 °**
 - **genzshcomp °**
 - **clang °**

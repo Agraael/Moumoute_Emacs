@@ -7,7 +7,7 @@
 
 declare -A osInfo;
 
-REQUIREMENT="python3 python3-pip cppcheck clang"
+REQUIREMENT="python3-pip cppcheck clang"
 PIP_PACK="genzshcomp"
 PIP="pip3 install"
 
