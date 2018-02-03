@@ -1,8 +1,8 @@
 # To do
 - [X] Put Memacs on github
 - [ ] Fix Memacs commands
-- [ ] Memacs script into python3
-- [ ] Memacs update system
+- [X] Memacs script into python3
+- [X] Memacs update system
 - [ ] Epitech Norm function -> 20 line limit
 - [X] Make README
 

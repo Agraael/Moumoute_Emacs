@@ -41,6 +41,7 @@ In future versions the installation will be more complex.
 - Emacs 24.5 or above
 - clang
 - cppcheck
+- python3
 
 ### Usage
 ```
@@ -48,24 +49,30 @@ cd Moumoute_Emacs
 ./Memacs -h
 ```
 ```
-Description:
-     Memacs open a Moumoute_emacs Client connected to a Local Moumoute Server
-     If the Moumoute Server doesn't exist, It is created by Memacs
-     The Moumoute Server cant be stoped (it will kill all client) and launched manually
-     You can also Launch a non client Moumoute_emacs
+usage: Memacs [OPTION] [FILE [FILE ...]]
 
-Usage:
-     Memacs [Memacs Options] [Files] [Emacs Options]
+Memacs open a Moumoute_emacs Client connected to a Local Moumoute Server if
+the Moumoute Server doesn't exist, it is created by Memacs the Moumoute Server
+can be stoped (it will kill all client) and launched manually. You can also
+Launch a non client Moumoute_emacs
 
-Options:
-    -h, --melp		This help menu of Memacs. For emacs help use -n and --help
-					and for emacsclient help just --help
-    -r --runserver	Start Moumoute_emacs Server in the background without opening a Client
-    -n, --noserve	Lauching a Moumoute_emacs non client
-    -s, --stop		Gracefully stops Moumoute_server. This should save your files first (pending for test).
-    -k, --kill		Kills Moumoute_server Warnning : This will not save files. Prefer -s if possible.
-    --just_sauce	Use this in case of bug emergency !!!
-    --raw_sauce		This is meant for debug , not for you !!!
+positional arguments:
+  FILES             Visit file using find-file
+
+optional arguments:
+  -h, --help        show this help message and exit
+  -n, --noserver    Lauching a Moumoute_emacs non-client
+  -r, --runserver   Start Moumoute_emacs Server in the background without
+                    opening a Client
+  -s, --stopserver  Gracefully stops Moumoute_server. This should save your
+                    files first (pending for test).
+  -k, --killserver  Kills Moumoute_server Warnning : This will not save files.
+                    Prefer -s if possible.
+  --just-sauce      Use this in case of bug emergency !!!
+  --raw-sauce       This is meant for debug , not for you !!!
+  --update          Update Moumoute Emacs , It's Important !!!
+  --version         Huehuehue !!!
+
 ```
 
 > New User :  WOWOWOW what's all this  ... \
@@ -97,10 +104,17 @@ One **-s** is suppose to save all buffer before killing the server, **-n** don't
 If you are using **-k** , use **M-X close-all-buffers** in  Memacs session to check all your buffer \
 (better commands will come later)
 
-WARNING FOR NOW **./Memacs -s** DON'T WORK !!!  .... yeah i'm a shitty programmer =)
+**Warning**, for now **./Memacs -s** don't work!!!  ....
+> i'll fix that later  ... maybe ...
+```
+./Memacs --update
+```
+by now Memacs will check for update every **3 days**.\
+But you can use this command for updating manually Moumoute Emacs
+
 
 ```
-./Memacs --just_sauce
+./Memacs --just-sauce
 ```
 
 The emergency command !!! hahah \

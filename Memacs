@@ -1,80 +1,229 @@
-#!/bin/bash
-## Memacs for  in /home/cedric
-##
-## Made by Cedric
-## Login   <cedric@epitech.eu>
-##
-## Started on  Thu Nov 10 20:05:45 2016 Cedric
-## Last update Tue Jan  9 15:39:08 2018 vincent
-##
+#! /usr/bin/env python3
+import os
+import argparse
+import sys
+import socket
+from datetime import datetime
+
+UID = os.geteuid()
+
+MAIN_EL_NAME = ".Moumoute_emacs"
+FILE_PATH = os.path.realpath(__file__)
+DIR_PATH = os.path.dirname(FILE_PATH)
+
+MAIN_EL_PATH = DIR_PATH + "/" + MAIN_EL_NAME
+
+SERVER_NAME = "Moumoute_Server"
+SERVR_PATH = "/tmp/emacs" + str(UID) + "/" + SERVER_NAME
+IS_SERVER = os.path.exists(SERVR_PATH)
+
+COLOR = "TERM=xterm-256color"
+MOME = "MOME=" + DIR_PATH
+ENV = COLOR + " " + MOME
+
+STOP_SERVER = "emacsclient -s " + SERVER_NAME + " --eval \"(save-buffers-kill-emacs)(shutdown-emacs-server)\""
+KILL_SERVER = "emacsclient -s " + SERVER_NAME + " --eval \"(kill-emacs)\""
+DESTROY_SERVER = "rm " + SERVR_PATH
+NON_CLIENT = "emacs -nw -l " + MAIN_EL_PATH + " -q"
+DEBUG_MODE = "emacs --debug-init -nw -l " + MAIN_EL_PATH + " -q "
+START_SERVER = "emacs --daemon=" + SERVER_NAME + " -l " + MAIN_EL_PATH + " -q "
+CLIENT = "emacsclient -nw -s " + SERVER_NAME
+VERSION = "cat " + DIR_PATH + "/.version"
+
+GIT_PATH = "git -C " + DIR_PATH
+UPDATE_CHECK = GIT_PATH + " remote update > /dev/null && " + GIT_PATH + " status -uno | grep -q 'Your branch is behind'"
+UPDATE = GIT_PATH + " pull"
+LOG_FILE = ".updateLog"
+LOG_FILE_PATH = DIR_PATH + "/" + LOG_FILE
+IS_LOG_FILE = os.path.exists(LOG_FILE_PATH)
 
 
-USERID=`id -u`
+class Colors:
+    """colors for shell prompt"""
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'']'
 
-export MOME=`dirname "$BASH_SOURCE"`
-MAIN_EL="$MOME/.Moumoute_emacs"
+def print_color(message, color):
+    print(color, message, Colors.ENDC)
 
+def memacs_command(command):
+    """take a string as a command for Memacs -> ENV + command"""
+    os.system(ENV + " " + command)
 
-OPTIONS="Description:
-     Memacs open a Moumoute_emacs Client connected to a Local Moumoute Server
-     If the Moumoute Server doesn't exist, It is created by Memacs
-     The Moumoute Server cant be stoped (it will kill all client) and launched manually
-     You can also Launch a non client Moumoute_emacs
-
-Usage:
-     Memacs [Memacs Options] [Files] [Emacs Options]
-
-Options:
-    -h, --melp		This help menu of Memacs. For emacs help use -n and --help
-			and for emacsclient help just --help
-    -r --runserver	Start Moumoute_emacs Server in the background without opening a Client
-    -n, --noserve	Lauching a Moumoute_emacs non client
-    -s, --stop		Gracefully stops Moumoute_server. This should save your files first (pending for test).
-    -k, --kill		Kills Moumoute_server Warnning : This will not save files. Prefer -s if possible.
-    --just_sauce	Use this in case of bug emergency !!!
-    --raw_sauce		This is meant for debug , not for you !!!
-"
+def delete_file_content(pfile):
+    """clear the content of pfile"""
+    pfile.seek(0)
+    pfile.truncate()
 
 
-case "$1" in
+def internet(host="8.8.8.8", port=53, timeout=3):
+    """
+    Host: 8.8.8.8 (google-public-dns-a.google.com)
+    OpenPort: 53/tcp
+    Service: domain (DNS/TCP)
+    """
+    try:
+        socket.setdefaulttimeout(timeout)
+        socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
+        return True
+    except Exception as ex:
+        return False
 
-    -s|--stop) if [ -e /tmp/emacs$USERID/Moumoute_server ]
-	       then
-		   echo "Stoping Moumoute_emacs Server !" ; emacsclient -s Moumoute_server --eval "(save-buffers-kill-emacs)(shutdown-emacs-server)" ; exit 1
-	       else
-		   echo "No Moumoute_emacs Server !" ; exit 1
-	       fi ;;
+def memacs_update_cheking(manual):
+    """check if Memacs is up to date"""
+    time_format = '%Y-%m-%d %H:%M'
+    actual_date = datetime.today()
 
-    -k|--kill) if [ -e /tmp/emacs$USERID/Moumoute_server ]
-	       then
-		   echo "Stoping Moumoute_emacs Server !" ; emacsclient -s Moumoute_server --eval "(kill-emacs)" ; exit 1
-	       else
-		   echo "No Moumoute_emacs Server !" ; exit 1
-	       fi ;;
+    if IS_LOG_FILE is True:
 
-    -h|--melp) printf "\n$OPTIONS\n" ; exit 1 ;;
+        with open(LOG_FILE_PATH, 'r+') as log_file:
+            lines = log_file.read().splitlines()
+            last_check = datetime.strptime(lines[-1].split("|")[1], time_format)
+            last_update = datetime.strptime(lines[0].split("|")[1], time_format)
 
-    -n|--noserve) echo "Starting Moumoute_emacs No Client !"; shift ; TERM=xterm-256color emacs -nw -l $MAIN_EL -q "$@" ; exit 1;;
+            days_check = abs((actual_date - last_check).days)
+            days_update = abs((actual_date - last_update).days)
+            if days_check > 3 or manual is True:
 
-    --just_sauce) if [ ! -e /tmp/emacs$USERID/Moumoute_server ]
-		  then
-		      echo "Destroying the Moumoute_emacs server !!" ; rm /tmp/emacs$USERID/Moumoute_server ; exit 1
-		  else
-		      echo "No Moumoute_emacs Server !" ; exit 1
-		  fi;;
-    --raw_sauce) printf "Are we in trouble ???\nMemacs debug mode activated !!"; shift ; TERM=xterm-256color emacs -nw --debug-init -l $MAIN_EL -q "$@" ; exit 1;;
-    -r|--runserver) if [ ! -e /tmp/emacs$USERID/Moumoute_server ]
-		    then
-			echo "Starting Moumoute_emacs Server !"; TERM=xterm-256color emacs --daemon=Moumoute_server -l $MAIN_EL -q  "$@"; exit 1
-		    else
-			echo "Moumoute_emacs Server is already running !" ; exit 1
-		    fi;;
-    --version) cat $MOME/.version;;
+                print_color("----------------------------------------------------------------", Colors.OKBLUE + Colors.BOLD)
+                print("Checking Moumoute Emacs Updates ... ")
+                if internet() is True:
 
-    *) if [ ! -e /tmp/emacs$USERID/Moumoute_server ]
-       then
-	   echo "Starting Moumoute_emacs Server and Client !" ; emacs --daemon=Moumoute_server -l $MAIN_EL -q ; TERM=xterm-256color emacsclient -nw -s Moumoute_server "$@" ; exit 1
-       else
-	   echo "Starting Moumoute_emacs Client !" ; TERM=xterm-256color emacsclient -nw -s Moumoute_server "$@" ; exit 1
-       fi;;
-esac
+                    if os.system(UPDATE_CHECK) == 0:
+                        print_color("Update available !!!", Colors.WARNING + Colors.BOLD)
+                        print("The last one was " + str(days_update) + " days ago !")
+                        choice = input("Do you want update Moumoute Emacs ? [yes/no]\n")
+
+                        if choice == "yes":
+                            print_color("Updating Moumoute Emacs ...", Colors.OKBLUE + Colors.BOLD)
+                            os.system(UPDATE)
+                            print_color("Yay Moumoute is up to date !!", Colors.OKGREEN + Colors.BOLD)
+                            print("Don't forget to check the github page for more information")
+                            delete_file_content(log_file)
+                            log_file.write("UPDATE|%s\n" %actual_date.strftime(time_format))
+
+                        else:
+                            print("Well as you wish  ... ")
+                            print("use --update for manual update")
+                            log_file.write("CHECKED|%s\n" %actual_date.strftime(time_format))
+
+                    else:
+                        print_color("No update available for Moumoute Emacs !!!", Colors.WARNING + Colors.BOLD)
+                        log_file.write("CHECKED|%s\n" %actual_date.strftime(time_format))
+                else:
+                    print_color("No internet conection , Memacs can't check for update", Colors.FAIL + Colors.BOLD)
+                    print("use --update for manual update")
+                    log_file.write("CHECKED|%s\n" %actual_date.strftime(time_format))
+                print_color("----------------------------------------------------------------", Colors.OKBLUE + Colors.BOLD)
+                if manual is False:
+                    input("press enter to continue ...")
+                    print("")
+    else:
+        with open(LOG_FILE_PATH, 'a') as log_file:
+            log_file.write("UPDATE|%s\n" %actual_date.strftime(time_format))
+
+memacs_update_cheking(False)
+
+PARSER = argparse.ArgumentParser(description = "Memacs open a Moumoute_emacs Client connected to a Local Moumoute Server if the Moumoute Server doesn't exist, it is created by Memacs the Moumoute Server can be stoped (it will kill all client) and launched manually. You can also Launch a non client Moumoute_emacs",
+				 usage='%(prog)s [OPTION] [FILE [FILE ...]]')
+
+PARSER.add_argument('FILES', type=str, nargs='*', help="Visit file using find-file")
+PARSER.add_argument("-n", "--noserver", help="Lauching a Moumoute_emacs non-client", action="store_true")
+PARSER.add_argument("-r", "--runserver", help="Start Moumoute_emacs Server in the background without opening a Client", action="store_true")
+PARSER.add_argument("-s", "--stopserver", help="Gracefully stops Moumoute_server. This should save your files first (pending for test).", action="store_true")
+PARSER.add_argument("-k", "--killserver", help="Kills Moumoute_server Warnning : This will not save files. Prefer -s if possible.", action="store_true")
+PARSER.add_argument("--just-sauce", help="Use this in case of bug emergency !!!", action="store_true")
+PARSER.add_argument("--raw-sauce", help="This is meant for debug , not for you !!!", action="store_true")
+PARSER.add_argument("--update", help="Update Moumoute Emacs , It's Important !!!", action="store_true")
+PARSER.add_argument("--version", help="Huehuehue !!!", action="store_true")
+
+ARGS = PARSER.parse_args()
+ARG_TRUE_NB = 0
+
+
+for arg in vars(ARGS):
+    value = getattr(ARGS, arg)
+    if isinstance(value, bool) and value is True:
+        ARG_TRUE_NB += 1
+
+if ARG_TRUE_NB > 1:
+    PARSER.print_usage()
+    sys.exit(1)
+
+FILES_STR = ' '.join(str(f) for f in ARGS.FILES)
+
+# --------------------------------------------------------------------------------------------------
+
+if ARGS.stopserver:
+    # if IS_SERVER is True:
+    #     print_color("Stoping Moumoute_Emacs Server !", Colors.OKGREEN + Colors.BOLD)
+    #     memacs_command(STOP_SERVER)
+    #     sys.exit(0)
+    # else:
+    #     print_color("No Moumoute_Emacs Server to stop!", Colors.WARNING + Colors.BOLD)
+    #     sys.exit(1)
+    print_color("sry dude , this command is under maintenance pls wait !!", Colors.FAIL + Colors.BOLD)
+
+elif ARGS.killserver:
+    if IS_SERVER is True:
+        print_color("Killing Moumoute_Emacs Server !", Colors.OKBLUE + Colors.BOLD)
+        memacs_command(KILL_SERVER)
+        sys.exit(0)
+    else:
+        print_color("No Moumoute_Emacs Server to kill!", Colors.WARNING + Colors.BOLD)
+        sys.exit(0)
+
+elif ARGS.noserver:
+    print_color("Starting Moumoute_Emacs No-Client ! ", Colors.OKGREEN + Colors.BOLD)
+    memacs_command(NON_CLIENT + " " + FILES_STR)
+    sys.exit(0)
+
+elif ARGS.runserver:
+    if IS_SERVER is False:
+        print_color("Starting Moumoute_Emacs Server !", Colors.OKGREEN + Colors.BOLD)
+        memacs_command(START_SERVER)
+        sys.exit(0)
+    else:
+        print_color("Moumoute_Emacs Server is already running !", Colors.WARNING + Colors.BOLD)
+        sys.exit(1)
+
+elif ARGS.just_sauce:
+    if IS_SERVER is True:
+        memacs_command(DESTROY_SERVER)
+        print_color("Moumoute_Emacs Server DESTROYED !!!", Colors.WARNING + Colors.BOLD)
+        sys.exit(0)
+    else:
+        print_color("Target not found !", Colors.FAIL + Colors.BOLD)
+        sys.exit(1)
+
+elif ARGS.raw_sauce:
+    print_color("Are we in trouble ???", Colors.OKBLUE + Colors.BOLD)
+    print_color("Memacs debug mode activated !", Colors.OKBLUE + Colors.BOLD)
+    memacs_command(DEBUG_MODE)
+    sys.exit(0)
+
+elif ARGS.version:
+    memacs_command(VERSION)
+    sys.exit(0)
+
+elif ARGS.update:
+    memacs_update_cheking(True)
+    sys.exit(0)
+
+else:
+    if IS_SERVER is False:
+        print_color("Starting Moumoute_Emacs Server and Client !", Colors.OKGREEN + Colors.BOLD)
+        memacs_command(START_SERVER)
+        memacs_command(CLIENT + " " + FILES_STR)
+    else:
+        print_color("Starting Moumoute_Emacs Client !", Colors.OKGREEN + Colors.BOLD)
+        memacs_command(CLIENT + " " + FILES_STR)
+    sys.exit(0)
+
+# --------------------------------------------------------------------------------------------------
