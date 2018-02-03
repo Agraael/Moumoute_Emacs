@@ -3,9 +3,13 @@ import os
 import argparse
 import sys
 import socket
+import platform
 from datetime import datetime
 
+# --------------------------------------------------------------------------------------------------
+
 UID = os.geteuid()
+CURRENT_OS = platform.dist()[0]
 
 MAIN_EL_NAME = ".Moumoute_emacs"
 FILE_PATH = os.path.realpath(__file__)
@@ -37,6 +41,10 @@ LOG_FILE = ".updateLog"
 LOG_FILE_PATH = DIR_PATH + "/" + LOG_FILE
 IS_LOG_FILE = os.path.exists(LOG_FILE_PATH)
 
+INSTALL_FILE = ".install"
+INSTALL_FILE_PATH = DIR_PATH + "/" + INSTALL_FILE
+
+# --------------------------------------------------------------------------------------------------
 
 class Colors:
     """colors for shell prompt"""
@@ -47,7 +55,8 @@ class Colors:
     FAIL = '\033[91m'
     ENDC = '\033[0m'
     BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'']'
+    UNDERLINE = '\033[4m'
+
 
 def print_color(message, color):
     print(color, message, Colors.ENDC)
@@ -128,6 +137,10 @@ def memacs_update_cheking(manual):
         with open(LOG_FILE_PATH, 'a') as log_file:
             log_file.write("UPDATE|%s\n" %actual_date.strftime(time_format))
 
+
+
+# --------------------------------------------------------------------------------------------------
+
 memacs_update_cheking(False)
 
 PARSER = argparse.ArgumentParser(description = "Memacs open a Moumoute_emacs Client connected to a Local Moumoute Server if the Moumoute Server doesn't exist, it is created by Memacs the Moumoute Server can be stoped (it will kill all client) and launched manually. You can also Launch a non client Moumoute_emacs",
@@ -140,12 +153,12 @@ PARSER.add_argument("-s", "--stopserver", help="Gracefully stops Moumoute_server
 PARSER.add_argument("-k", "--killserver", help="Kills Moumoute_server Warnning : This will not save files. Prefer -s if possible.", action="store_true")
 PARSER.add_argument("--just-sauce", help="Use this in case of bug emergency !!!", action="store_true")
 PARSER.add_argument("--raw-sauce", help="This is meant for debug , not for you !!!", action="store_true")
+PARSER.add_argument("--install", help="Install/upgrade all required package for Memacs", action="store_true")
 PARSER.add_argument("--update", help="Update Moumoute Emacs , It's Important !!!", action="store_true")
 PARSER.add_argument("--version", help="Huehuehue !!!", action="store_true")
 
 ARGS = PARSER.parse_args()
 ARG_TRUE_NB = 0
-
 
 for arg in vars(ARGS):
     value = getattr(ARGS, arg)
@@ -158,7 +171,7 @@ if ARG_TRUE_NB > 1:
 
 FILES_STR = ' '.join(str(f) for f in ARGS.FILES)
 
-# --------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------------------------
 
 if ARGS.stopserver:
     # if IS_SERVER is True:
@@ -216,6 +229,10 @@ elif ARGS.update:
     memacs_update_cheking(True)
     sys.exit(0)
 
+elif ARGS.install:
+    os.system(INSTALL_FILE_PATH)
+    sys.exit(0)
+
 else:
     if IS_SERVER is False:
         print_color("Starting Moumoute_Emacs Server and Client !", Colors.OKGREEN + Colors.BOLD)
@@ -226,4 +243,4 @@ else:
         memacs_command(CLIENT + " " + FILES_STR)
     sys.exit(0)
 
-# --------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------------------------

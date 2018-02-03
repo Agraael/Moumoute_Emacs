@@ -5,6 +5,7 @@
 - [X] Memacs update system
 - [ ] Epitech Norm function -> 20 line limit
 - [X] Make README
+- [X] Installation system
 
 ## Next
 - [ ] Memacs Makefile parsing -> gcc/clang arg apply

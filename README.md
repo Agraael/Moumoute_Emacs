@@ -33,19 +33,22 @@ Well ... , for now you just have to clone the repository (the project is a  fu**
 Moumoute is _standalone_ , it doesn't modify your Emacs configuration , everything is stored **Moumoute_Emacs** directory.
 ```
 git clone https://github.com/Agraael/Moumoute_Emacs.git
+cd Moumoute_Emacs
+./Memacs --install
 ```
 In future versions the installation will be more complex.
 
 ### Requirement
 
-- Emacs 24.5 or above
-- clang
-- cppcheck
-- python3
+- **Emacs 24 to Emacs 25**
+- **python3**
+- **clang °**
+- **cppcheck °**
+
+**°** -> provided in installation script
 
 ### Usage
 ```
-cd Moumoute_Emacs
 ./Memacs -h
 ```
 ```
@@ -70,6 +73,7 @@ optional arguments:
                     Prefer -s if possible.
   --just-sauce      Use this in case of bug emergency !!!
   --raw-sauce       This is meant for debug , not for you !!!
+  --install         Install/upgrade all required package for Memacs
   --update          Update Moumoute Emacs , It's Important !!!
   --version         Huehuehue !!!
 

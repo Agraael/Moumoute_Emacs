@@ -1,0 +1,66 @@
+#!/bin/bash
+## EPITECH PROJECT, 2018
+##
+## File description:
+##
+##
+
+declare -A osInfo;
+
+REQUIREMENT="python3 cppcheck clang"
+
+OKBLUE='\033[94m'
+OKGREEN='\033[92m'
+WARNING='\033[93m'
+FAIL='\033[91m'
+ENDC='\033[0m'
+BOLD='\033[1m'
+UNDERLINE='\033[4m'
+
+osInfo[/etc/redhat-release]="yum install"
+# osInfo[/etc/arch-release]=pacman
+# osInfo[/etc/gentoo-release]=emerge
+# osInfo[/etc/SuSE-release]=zypp
+osInfo[/etc/debian_version]="apt-get install"
+
+PACKAGE_MANAGER=""
+
+for f in ${!osInfo[@]}
+do
+    if [[ -f $f ]];then
+	PACKAGE_MANAGER=${osInfo[$f]}
+    fi
+done
+
+printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"
+
+INTERNET=""
+
+if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+    INTERNET="yes"
+else
+    INTERNET="no"
+fi
+
+if [ "$INTERNET" = "no" ]; then
+    printf "$FAIL$BOLD No internet connection, we can't install/upgrade the required packages$ENDC\n"
+    printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"
+    exit 1;
+fi
+
+printf "$OKBLUE$BOLD The following packages will be installed :$ENDC\n$BOLD $WARNING $REQUIREMENT $ENDC\n"
+printf "Root access will be needed, do you want to continue ? "
+printf "$OKGREEN$BOLD [yes/no] $ENDC\n"
+
+read choice
+
+if [ "$choice" = "yes" ]; then
+    sudo $PACKAGE_MANAGER $REQUIREMENT
+    printf "Installation done !!"
+else
+    printf "$WARNING$BOLD OK then ... $ENDC\ndon't forget  ./install or ./Memacs --install\nfor install or upgrade those package\n"
+fi
+
+printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"
+
+exit 0;
