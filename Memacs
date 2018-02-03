@@ -5,6 +5,8 @@ import sys
 import socket
 import platform
 from datetime import datetime
+from genzshcomp import CompletionGenerator
+from optparse import OptionParser
 
 # --------------------------------------------------------------------------------------------------
 
@@ -155,7 +157,53 @@ PARSER.add_argument("--just-sauce", help="Use this in case of bug emergency !!!"
 PARSER.add_argument("--raw-sauce", help="This is meant for debug , not for you !!!", action="store_true")
 PARSER.add_argument("--install", help="Install/upgrade all required package for Memacs", action="store_true")
 PARSER.add_argument("--update", help="Update Moumoute Emacs , It's Important !!!", action="store_true")
+PARSER.add_argument("--zsh-completion", help="Create files for Memacs completion in zsh", action="store_true")
 PARSER.add_argument("--version", help="Huehuehue !!!", action="store_true")
+
+
+COMPLETION_DIR = ".zsh_comp"
+COMPLETION_FILE = "_Memacs"
+COMPLETION_FILE_PATH = DIR_PATH + "/" + COMPLETION_DIR + "/" + COMPLETION_FILE
+ZSH_CONFIG_FILE = "config.sh"
+ZSH_CONFIG_FILE_PATH = DIR_PATH + "/" + COMPLETION_DIR + "/" + ZSH_CONFIG_FILE
+
+ZSH_PATH = "~/.zshrc"
+IS_ZSH_FILE = os.path.exists(ZSH_PATH)
+
+
+ZSH_CONFIG_TEXT = """
+#!/bin/bash
+
+# COMPLETION SETTINGS
+# add custom competion for Memacs
+
+""" + "fpath=(" + DIR_PATH + "/.zsh_comp" + " $fpath)" + """
+#comsys initiaisation
+autoload -U compinit
+compinit
+zstyle ':completion:*' menu select=1
+
+# END
+
+"""
+
+def generate_zsh_completion():
+    """generate two file for completion in zsh"""
+
+    if not os.path.exists(DIR_PATH + "/" + COMPLETION_DIR):
+        os.makedirs(DIR_PATH + "/" + COMPLETION_DIR)
+
+    completion = CompletionGenerator("Memacs", PARSER)
+    with open(COMPLETION_FILE_PATH, 'a') as comp_file:
+        delete_file_content(comp_file)
+        comp_file.write(completion.get())
+
+    with open(ZSH_CONFIG_FILE_PATH, 'a') as comp_file:
+        delete_file_content(comp_file)
+        comp_file.write(ZSH_CONFIG_TEXT)
+
+    print_color("completion and config files generated, now apply this line in your .zshrc", Colors.OKBLUE + Colors.BOLD)
+    print("source " + ZSH_CONFIG_FILE_PATH)
 
 ARGS = PARSER.parse_args()
 ARG_TRUE_NB = 0
@@ -231,6 +279,10 @@ elif ARGS.update:
 
 elif ARGS.install:
     os.system(INSTALL_FILE_PATH)
+    sys.exit(0)
+
+elif ARGS.zsh_completion:
+    generate_zsh_completion()
     sys.exit(0)
 
 else:

@@ -41,7 +41,9 @@ In future versions the installation will be more complex.
 ### Requirement
 
 - **Emacs 24 to Emacs 25**
-- **python3**
+- **python3 °**
+- **pip3 °**
+- **genzshcomp °**
 - **clang °**
 - **cppcheck °**
 
@@ -75,6 +77,7 @@ optional arguments:
   --raw-sauce       This is meant for debug , not for you !!!
   --install         Install/upgrade all required package for Memacs
   --update          Update Moumoute Emacs , It's Important !!!
+  --zsh-completion  Create files for Memacs completion in zsh
   --version         Huehuehue !!!
 
 ```
@@ -84,7 +87,7 @@ optional arguments:
 
 **Moumoute_Emacs** have two mode , **Server mode** and **Non-Server mode**. \
 By default **Memacs** will use the server mode.\
-But what is this Mode u may ask .\
+But what is this Mode u may ask .
 
 Well it's pretty simple , **Memacs** use Daemon feature since emacs 23  \
 to create a local server to be the root of your emacs session.\
@@ -116,6 +119,11 @@ If you are using **-k** , use **M-X close-all-buffers** in  Memacs session to ch
 by now Memacs will check for update every **3 days**.\
 But you can use this command for updating manually Moumoute Emacs
 
+```
+./Memacs --zsh-completion
+```
+If your are on **zsh** use this , it will create files for Memacs completion\
+It will print the command you have put in your **.zshrc** file
 
 ```
 ./Memacs --just-sauce

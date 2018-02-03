@@ -7,7 +7,9 @@
 
 declare -A osInfo;
 
-REQUIREMENT="cppcheck clang"
+REQUIREMENT="python3 python3-pip cppcheck clang"
+PIP_PACK="genzshcomp"
+PIP="pip3 install"
 
 OKBLUE='\033[94m'
 OKGREEN='\033[92m'
@@ -50,12 +52,12 @@ fi
 
 if [ "$PACKAGE_MANAGER" = "no" ];then
     printf "$FAIL$BOLD sry Memacs do not provide automatic installation on your distribution$ENDC\n"
-    printf "You must install packages manually :\n$BOLD$WARNING $REQUIREMENT $ENDC\n"
+    printf "You must install packages manually :\n$BOLD$WARNING $REQUIREMENT $PIP_PACK$ENDC\n"
     printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"
     exit 1;
 fi
 
-printf "The following packages will be installed :$ENDC\n$BOLD$WARNING $REQUIREMENT $ENDC\n"
+printf "The following packages will be installed/upgraded :$ENDC\n$BOLD$WARNING $REQUIREMENT $PIP_PACK$ENDC\n"
 printf "Root access will be needed, do you want to continue ?"
 printf "$OKGREEN$BOLD [yes/no] $ENDC\n"
 
@@ -63,7 +65,8 @@ read choice
 
 if [ "$choice" = "yes" ]; then
     sudo $PACKAGE_MANAGER $REQUIREMENT
-    printf "Installation done !!"
+    sudo $PIP $PIP_PACK
+    printf "Installation done !!\n"
 else
     printf "$WARNING$BOLD OK then ... $ENDC\ndon't forget  ./install or ./Memacs --install\nfor install or upgrade those package\n"
 fi
