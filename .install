@@ -9,7 +9,7 @@ declare -A osInfo;
 
 REQUIREMENT="python3-pip cppcheck clang"
 PIP_PACK="genzshcomp"
-PIP="pip3 install"
+PIP="pip3 -v install"
 
 OKBLUE='\033[94m'
 OKGREEN='\033[92m'
@@ -19,11 +19,11 @@ ENDC='\033[0m'
 BOLD='\033[1m'
 UNDERLINE='\033[4m'
 
-osInfo[/etc/redhat-release]="yum install"
+osInfo[/etc/redhat-release]="yum -v install"
 # osInfo[/etc/arch-release]=pacman
 # osInfo[/etc/gentoo-release]=emerge
 # osInfo[/etc/SuSE-release]=zypp
-osInfo[/etc/debian_version]="apt-get install"
+osInfo[/etc/debian_version]="apt-get -V install"
 
 PACKAGE_MANAGER="no"
 
@@ -45,19 +45,19 @@ else
 fi
 
 if [ "$INTERNET" = "no" ]; then
-    printf "$FAIL$BOLD No internet connection, Memacs can't install/upgrade the required packages$ENDC\n"
+    printf "$FAIL$BOLD"; printf "No internet connection\nMemacs can't install/upgrade the required packages$ENDC\n"
     printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"
     exit 1;
 fi
 
 if [ "$PACKAGE_MANAGER" = "no" ];then
-    printf "$FAIL$BOLD sry Memacs do not provide automatic installation on your distribution$ENDC\n"
-    printf "You must install packages manually :\n$BOLD$WARNING $REQUIREMENT $PIP_PACK$ENDC\n"
+    printf "$FAIL$BOLD"; printf "Sry Memacs do not provide installation on your distribution$ENDC\n"
+    printf "You must install/upgrade thoses packages manually :\n$BOLD$WARNING$REQUIREMENT $PIP_PACK$ENDC\n"
     printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"
     exit 1;
 fi
 
-printf "The following packages will be installed/upgraded :$ENDC\n$BOLD$WARNING $REQUIREMENT $PIP_PACK$ENDC\n"
+printf "The following packages will be installed/upgraded :$ENDC\n$BOLD$WARNING$REQUIREMENT $PIP_PACK$ENDC\n"
 printf "Root access will be needed, do you want to continue ?"
 printf "$OKGREEN$BOLD [yes/no] $ENDC\n"
 
@@ -68,7 +68,7 @@ if [ "$choice" = "yes" ]; then
     sudo $PIP $PIP_PACK
     printf "Installation done !!\n"
 else
-    printf "$WARNING$BOLD OK then ... $ENDC\ndon't forget  ./install or ./Memacs --install\nfor install or upgrade those package\n"
+    printf "$WARNING$BOLD" ; printf "OK then ... $ENDC\ndon't forget ./Memacs --install\nfor install or upgrade those packages\n"
 fi
 
 printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"

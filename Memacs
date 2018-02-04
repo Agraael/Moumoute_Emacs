@@ -60,7 +60,7 @@ class Colors:
 
 
 def print_color(message, color):
-    print(color, message, Colors.ENDC)
+    print(color + message + Colors.ENDC)
 
 def memacs_command(command):
     """take a string as a command for Memacs -> ENV + command"""
@@ -116,7 +116,7 @@ def memacs_update_cheking(manual):
                             print_color("Yay Moumoute is up to date !!", Colors.OKGREEN + Colors.BOLD)
                             print("Don't forget to check the github page for more information")
                             delete_file_content(log_file)
-                            log_file.write("UPDATE|%s\n" %actual_date.strftime(time_format))
+                            log_file.write("UPDATED|%s\n" %actual_date.strftime(time_format))
 
                         else:
                             print("Well as you wish  ... ")
