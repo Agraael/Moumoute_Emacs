@@ -1,0 +1,130 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+kquitapp krunner && kstart krunner -> relance krunner , permet de le faire fonctionner sur deux ecrans
+
+
+xrandr --output eDP1 --mode 1920x1080 --left-of DP2 --mode 1920x1080
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#root ----------->
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#touche e dans le grub -> ligne linux -> init=/bin/sh
+
+boot -> f10
+
+loadkeys fr
+
+-> /etc/salt/minion
+->/etc/sudoers
+sudo apt-get autoclean
+sudo apt-get autoremove
+sudo apt-get clean
+
+i3lock c'est cool
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sudo mount -t ntfs /dev/sda9 /mnt
+
+
+crtl-alt-F1 -> mode console , leave kde
+
+crtl-alt-f7 come back
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+peut faire des boucle dans le term:
+
+for i in {1..90}; do
+for> convert font.png loading${i}.png -gravity center -composite -matte loading${i}.png
+for> done
+
+met loading dans font ( au millieux)
+
+ffmpeg -i aprqnQB_460sv.mp4 ./bootsplash/loading%d.png
+
+[-r 10 ] before the outpur file , set the frequence !!
+[-s 16x16] pour la taille
+
+transforme une video en image
+
+
+optipng -o7 loading_pic/loading0002.png
+
+png compression
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sudo update-alternatives --config text.plymouth
+
+sudo update-alternatives --config default.plymouth
+
+changer plymouth (bootloading)
+
+plymouthd; plymouth --show-splash ; for ((I=0; I<5; I++)); do plymouth --update=test$I ; sleep 1; done; plymouth quit
+
+tester le bootloading
+
+sudo update-alternatives --install /usr/share/plymouth/themes/text.plymouth text.plymouth /usr/share/plymouth/themes/dick/dick.plymouth 100
+
+install alternative
+
+
+update le fichier de boot , used in grub -> grub.cfg
+sudo update-initramfs -u
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+grub2-mkconfig -o /boot/grub2/grub.cfg
+
+creat new grub.cfg and put into it
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+commande pour les log du boot
+
+dmesg
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+which -> to know command location
+
+history
+
+
+pkcon update (maj Blinux)
+
+touch (create a file)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mount -rw -o remount /
+
+//chopper le Pid du process ->
+my_command & echo $!
+
+//
+my_command & pid=$!
+echo $pid
+
+kill $pid
+
+//changer le nom de mon process
+bash -c "exec -a <MyProcessName> <Command>"
+pkill <MyProcessName>
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+restart kde plasma 5
+kquitapp5 plasmashell ; kwin --replace & kstart plasmashell
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sudo mount -t ntfs -o ro /dev/sda11 /mnt
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+(define-key key-translation-map (kbd ";") (kbd ";"))
+
+dans emacs  change le semi colon par 
