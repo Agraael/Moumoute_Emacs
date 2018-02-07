@@ -37,7 +37,7 @@ CLIENT = "emacsclient -nw -s " + SERVER_NAME
 VERSION = "cat " + DIR_PATH + "/.version"
 
 GIT_PATH = "git -C " + DIR_PATH
-UPDATE_CHECK = GIT_PATH + " remote update > /dev/null && " + GIT_PATH + " status -uno | grep -q 'Your branch is behind'"
+UPDATE_CHECK = GIT_PATH + " remote update > /dev/null && " + GIT_PATH + " status -uno | grep -q 'Your branch is behind\|Votre branche est en retard'"
 UPDATE = GIT_PATH + " pull"
 LOG_FILE = ".updateLog"
 LOG_FILE_PATH = DIR_PATH + "/" + LOG_FILE
@@ -116,7 +116,7 @@ def memacs_update_cheking(manual):
                     if os.system(UPDATE_CHECK) == 0:
                         print_color("Update available !!!", Colors.WARNING + Colors.BOLD)
                         print("The last one was " + str(days_update) + " days ago !")
-                        choice = input("Do you want update Moumoute Emacs ? [yes/no]\n")
+                        choice = input("Do you want update Moumoute Emacs ?" + Colors.OKGREEN + Colors.BOLD + " [yes/no]\n" + Colors.ENDC)
 
                         if choice == "yes":
                             print_color("Updating Moumoute Emacs ...", Colors.OKBLUE + Colors.BOLD)
