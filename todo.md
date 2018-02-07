@@ -11,11 +11,13 @@
 - [ ] Memacs Makefile parsing -> gcc/clang arg apply
 - [ ] Project (and code) cleanning
 - [ ] Update all packages
+- [ ] install doxygen documentation system
 - [ ] setting and testing Irony-mode and server for C/C++
 - [ ] Stand alone cppcheck installation
 - [ ] Memacs user configuration system
 - [ ] Memacs 2 separate graphics mode GUI/Term
 - [ ] Memacs theme system
+- [ ] using Cmake (like in clion)
 - [ ] "Norminette" in Memacs and customizable -> coala linting and fixing
 
 ## Fix
