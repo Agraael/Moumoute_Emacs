@@ -77,6 +77,9 @@ def internet(url='http://www.google.com/', timeout=5):
     except requests.ConnectionError:
         return False
 
+
+DAYS_CHECK = 7
+
 def memacs_update_cheking(manual):
     """check if Memacs is up to date"""
     time_format = '%Y-%m-%d %H:%M'
@@ -91,7 +94,7 @@ def memacs_update_cheking(manual):
 
             days_check = abs((actual_date - last_check).days)
             days_update = abs((actual_date - last_update).days)
-            if days_check > 3 or manual is True:
+            if days_check > DAYS_CHECK or manual is True:
 
                 print_color("----------------------------------------------------------------", Colors.OKBLUE + Colors.BOLD)
                 print("Checking Moumoute Emacs Updates ... ")
