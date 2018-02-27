@@ -697,6 +697,6 @@
   (save-some-buffers t)
   (message "All buffers have been saved"))
 
-(global-set-key (kbd "C-S") 'save-all)
+;; (global-set-key (kbd "C-x C-S") 'save-all)
 ;; -------------------function arg for c and c++
 ;;(fa-config-default)
