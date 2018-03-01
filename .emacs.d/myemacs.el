@@ -95,6 +95,9 @@
 
 ;;(font-lock-remove-keywords)
 (global-set-key (kbd "<f2>") 'highlight-80+-mode)
+(add-hook 'c++-mode-hook 'highlight-80+-mode)
+(add-hook 'c-mode-hook 'highlight-80+-mode)
+
 
 ;; whitespace-line-colunm variable du nombre de lig
 ;; (global-set-key (kbd "<f2>") 'whitespace-mode)
