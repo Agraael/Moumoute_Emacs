@@ -44,6 +44,8 @@ IS_LOG_FILE = os.path.exists(LOG_FILE_PATH)
 INSTALL_FILE = ".install"
 INSTALL_FILE_PATH = DIR_PATH + "/" + INSTALL_FILE
 
+SHOW_LAST_COMMIT = GIT_PATH + ' log --pretty=format:"%w(100)%C(bold blue)%ae%C(bold green) %cr%C(bold red) --> %C(bold white)%B%n" -n 1 | cat'
+
 # --------------------------------------------------------------------------------------------------
 
 class Colors:
@@ -94,12 +96,12 @@ def memacs_update_cheking(manual):
 
             days_check = abs((actual_date - last_check).days)
             days_update = abs((actual_date - last_update).days)
+
             if days_check > DAYS_CHECK or manual is True:
 
                 print_color("----------------------------------------------------------------", Colors.OKBLUE + Colors.BOLD)
                 print("Checking Moumoute Emacs Updates ... ")
                 if internet() is True:
-
                     if os.system(UPDATE_CHECK) == 0:
                         print_color("Update available !!!", Colors.WARNING + Colors.BOLD)
                         print("The last one was " + str(days_update) + " days ago !")
@@ -109,6 +111,9 @@ def memacs_update_cheking(manual):
                             print_color("Updating Moumoute Emacs ...", Colors.OKBLUE + Colors.BOLD)
                             os.system(UPDATE)
                             print_color("Yay Moumoute is up to date !!", Colors.OKGREEN + Colors.BOLD)
+                            print_color("----------------------------------------------------------------", Colors.OKBLUE + Colors.BOLD)
+                            os.system(SHOW_LAST_COMMIT)
+                            print_color("----------------------------------------------------------------", Colors.OKBLUE + Colors.BOLD)
                             print("Don't forget to check the github page for more information")
                             delete_file_content(log_file)
                             log_file.write("UPDATED|%s\n" %actual_date.strftime(time_format))
