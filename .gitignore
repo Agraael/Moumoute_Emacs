@@ -1,3 +1,5 @@
+.gitignore
+
 /cppcheck-1.81/
 cppcheck-1\.82/
 
