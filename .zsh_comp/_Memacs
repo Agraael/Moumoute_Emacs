@@ -22,6 +22,7 @@ _arguments -s -S \
   "--raw-sauce[This is meant for debug , not for you !!!]" \
   "--install[Install/upgrade all required package for Memacs]" \
   "--update[Update Moumoute Emacs , It's Important !!!]" \
+  "--log[Show NB last Moumoute_Emacs log, use this to see my update messages]::[NB]:_files" \
   "--zsh-completion[Create files for Memacs completion in zsh]" \
   "--version[Huehuehue !!!]:" \
   "*::args:_files"

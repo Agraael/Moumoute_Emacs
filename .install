@@ -8,7 +8,7 @@
 declare -A osInfo;
 
 REQUIREMENT="python3-pip cppcheck clang"
-PIP_PACK="genzshcomp"
+PIP_REQUIREMENT="genzshcomp"
 PIP="pip3 -v install"
 
 OKBLUE='\033[94m'
@@ -34,11 +34,15 @@ do
     fi
 done
 
+if [ -n "$ERROR" ]; then
+    echo "ERROR"
+fi
+
 printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"
 
 INTERNET=""
 
-if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
+if ping -q -c 1 -W 1 8.8.8.8 &> /dev/null; then
     INTERNET="yes"
 else
     INTERNET="no"
@@ -52,21 +56,56 @@ fi
 
 if [ "$PACKAGE_MANAGER" = "no" ];then
     printf "$FAIL$BOLD"; printf "Sry Memacs do not provide installation on your distribution$ENDC\n"
-    printf "You must install/upgrade thoses packages manually :\n$BOLD$WARNING$REQUIREMENT $PIP_PACK$ENDC\n"
+    printf "You must install/upgrade thoses packages manually :\n$BOLD$WARNING$REQUIREMENT $PIP_REQUIREMENT$ENDC\n"
     printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"
     exit 1;
 fi
 
-printf "The following packages will be installed/upgraded :$ENDC\n$BOLD$WARNING$REQUIREMENT $PIP_PACK$ENDC\n"
+printf "The following packages will be installed/upgraded :$ENDC\n$BOLD$WARNING$REQUIREMENT $PIP_REQUIREMENT$ENDC\n"
 printf "Root access will be needed, do you want to continue ?"
 printf "$OKGREEN$BOLD [yes/no] $ENDC\n"
 
 read choice
+INSTALL=""
+ERROR=""
 
 if [ "$choice" = "yes" ]; then
-    sudo $PACKAGE_MANAGER $REQUIREMENT
-    sudo $PIP $PIP_PACK
-    printf "Installation done !!\n"
+
+    for pack in $REQUIREMENT
+    do
+	if ! sudo $PACKAGE_MANAGER $pack; then
+	    INSTALL+=`printf "%-22s $OKBLUE$BOLD%-13s$ENDC %-4s %-8s|" "$PACKAGE_MANAGER :" "$pack" "=>" "[$FAIL$BOLD KO $ENDC]"`
+	    ERROR+="+"
+	else
+	    INSTALL+=`printf "%-22s $OKBLUE$BOLD%-13s$ENDC %-4s %-8s|" "$PACKAGE_MANAGER :" "$pack" "=>" "[$OKGREEN$BOLD OK $ENDC]"`
+	fi
+    done
+
+    for pack in $PIP_REQUIREMENT
+    do
+	if ! sudo $PIP $pack; then
+	    INSTALL+=`printf "%-22s $OKBLUE$BOLD%-13s$ENDC %-4s %-8s|" "$PIP :" "$pack" "=>" "[$FAIL$BOLD OK $ENDC]"`
+	    ERROR+="+"
+	else
+	    INSTALL+=`printf "%-22s $OKBLUE$BOLD%-13s$ENDC %-4s %-8s|" "$PIP :" "$pack" "=>" "[$OKGREEN$BOLD OK $ENDC]"`
+	fi
+    done
+
+    printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n\n"
+    OLD_IFS=$IFS
+    IFS="|"
+    for pack in $INSTALL
+    do
+	printf "$pack\n"
+    done
+    IFs=$OLD_IFS
+    if [ -n "$ERROR" ]; then
+	printf "\n$WARNING$BOLD Warning !$ENDC some installations failed\n"
+	printf "$OKBLUE$BOLD----------------------------------------------------------------$ENDC\n"
+	exit 1;
+    else
+	printf "\nInstallation done !!\n"
+    fi
 else
     printf "$WARNING$BOLD" ; printf "OK then ... $ENDC\ndon't forget ./Memacs --install\nfor install or upgrade those packages\n"
 fi

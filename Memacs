@@ -43,7 +43,8 @@ IS_LOG_FILE = os.path.exists(LOG_FILE_PATH)
 INSTALL_FILE = ".install"
 INSTALL_FILE_PATH = DIR_PATH + "/" + INSTALL_FILE
 
-SHOW_LAST_COMMIT = GIT_PATH + ' log --pretty=format:"%w(100)%C(bold blue)%ae%C(bold green) %cr%C(bold red) --> %C(bold white)%B%n" -n 1 | cat'
+SHOW_COMMIT_1 = GIT_PATH + ' log --pretty=format:"%w(100)%C(bold blue)%ae%C(bold green) %cr%C(bold red) --> %C(bold white)%B%n" -n '
+SHOW_COMMIT_2 = ' | cat'
 
 # --------------------------------------------------------------------------------------------------
 
@@ -80,6 +81,10 @@ def internet(url='http://www.google.com/', timeout=5):
     except requests.ConnectionError:
         return False
 
+def show_commit(nb):
+    """show nb last commit"""
+    os.system(SHOW_COMMIT_1 + str(nb) + SHOW_COMMIT_2)
+
 DAYS_CHECK = 7
 
 def memacs_update_cheking(manual):
@@ -112,7 +117,7 @@ def memacs_update_cheking(manual):
                             os.system(UPDATE)
                             print_color("Yay Moumoute is up to date !!", Colors.OKGREEN + Colors.BOLD)
                             print_color("----------------------------------------------------------------", Colors.OKBLUE + Colors.BOLD)
-                            os.system(SHOW_LAST_COMMIT)
+                            show_commit(1)
                             print_color("----------------------------------------------------------------", Colors.OKBLUE + Colors.BOLD)
                             print("Don't forget to check the github page for more information")
                             delete_file_content(log_file)
@@ -122,7 +127,6 @@ def memacs_update_cheking(manual):
                             print("Well as you wish  ... ")
                             print("use --update for manual update")
                             log_file.write("CHECKED|%s\n" %actual_date.strftime(time_format))
-
                     else:
                         print_color("No update available for Moumoute Emacs !!!", Colors.WARNING + Colors.BOLD)
                         log_file.write("CHECKED|%s\n" %actual_date.strftime(time_format))
@@ -137,7 +141,6 @@ def memacs_update_cheking(manual):
     else:
         with open(LOG_FILE_PATH, 'a') as log_file:
             log_file.write("UPDATE|%s\n" %actual_date.strftime(time_format))
-
 
 # --------------------------------------------------------------------------------------------------
 
@@ -155,9 +158,9 @@ PARSER.add_argument("--just-sauce", help="Use this in case of bug emergency !!!"
 PARSER.add_argument("--raw-sauce", help="This is meant for debug , not for you !!!", action="store_true")
 PARSER.add_argument("--install", help="Install/upgrade all required package for Memacs", action="store_true")
 PARSER.add_argument("--update", help="Update Moumoute Emacs , It's Important !!!", action="store_true")
+PARSER.add_argument("--log", nargs=1, help="Show NB last Moumoute_Emacs log, use this to see my update messages", type=int, metavar='[NB]')
 PARSER.add_argument("--zsh-completion", help="Create files for Memacs completion in zsh", action="store_true")
 PARSER.add_argument("--version", help="Huehuehue !!!", action="store_true")
-
 
 COMPLETION_DIR = ".zsh_comp"
 COMPLETION_FILE = "_Memacs"
@@ -167,7 +170,6 @@ ZSH_CONFIG_FILE_PATH = DIR_PATH + "/" + COMPLETION_DIR + "/" + ZSH_CONFIG_FILE
 
 ZSH_PATH = "~/.zshrc"
 IS_ZSH_FILE = os.path.exists(ZSH_PATH)
-
 
 ZSH_CONFIG_TEXT = """
 #!/bin/bash
@@ -283,6 +285,10 @@ elif ARGS.install:
 
 elif ARGS.zsh_completion:
     generate_zsh_completion()
+    sys.exit(0)
+
+elif ARGS.log:
+    show_commit(ARGS.log[0])
     sys.exit(0)
 
 else:
