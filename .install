@@ -84,7 +84,7 @@ if [ "$choice" = "yes" ]; then
     for pack in $PIP_REQUIREMENT
     do
 	if ! sudo $PIP $pack; then
-	    INSTALL+=`printf "%-22s $OKBLUE$BOLD%-13s$ENDC %-4s %-8s|" "$PIP :" "$pack" "=>" "[$FAIL$BOLD OK $ENDC]"`
+	    INSTALL+=`printf "%-22s $OKBLUE$BOLD%-13s$ENDC %-4s %-8s|" "$PIP :" "$pack" "=>" "[$FAIL$BOLD KO $ENDC]"`
 	    ERROR+="+"
 	else
 	    INSTALL+=`printf "%-22s $OKBLUE$BOLD%-13s$ENDC %-4s %-8s|" "$PIP :" "$pack" "=>" "[$OKGREEN$BOLD OK $ENDC]"`
