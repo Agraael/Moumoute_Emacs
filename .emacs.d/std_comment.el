@@ -48,7 +48,7 @@
                         ("Perl"                 . std-cperl-alist)
                         ("CPerl"                . std-cperl-alist)
                         ("xdefault"             . std-xdefault-alist)
-                        ("java"                 . std-java-alist)
+                        ("Java/l"                 . std-java-alist)
                         ("latex"                . std-latex-alist)
                         ("Pascal"               . stdp-ascal-alist)
                         ("Text"                 . std-text-alist)
