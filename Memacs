@@ -85,7 +85,7 @@ def show_commit(nb):
     """show nb last commit"""
     os.system(SHOW_COMMIT_1 + str(nb) + SHOW_COMMIT_2)
 
-DAYS_CHECK = 7
+DAYS_CHECK = 15
 
 def memacs_update_cheking(manual):
     """check if Memacs is up to date"""
