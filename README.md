@@ -116,7 +116,7 @@ If you are using **-k** , use **M-X close-all-buffers** in  Memacs session to ch
 ```
 ./Memacs --update
 ```
-by now Memacs will check for update every **3 days**.\
+by now Memacs will check for update every **15 days**.\
 But you can use this command for updating manually Moumoute Emacs
 
 ```
