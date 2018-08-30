@@ -142,7 +142,7 @@ Some are the same in emacs , some are modified , some are new.
 first a little reminder about emacs command 
 - **M-** stand for **Alt** key
 - **C-** stand for **Ctrl** key
--  those command are meant for AZERTY , sry  guys i will and QWERTY version later
+-  those command are meant for AZERTY , sry  guys i will make an QWERTY version later
 -  **C-c k** (Ctrl + c then c) will display the list of all command in **Memacs**
 -  use **C-g** to cancel any command
 - **C-s** search command , repeat **C-s** to switch to the next match
