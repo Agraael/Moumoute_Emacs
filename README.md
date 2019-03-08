@@ -1,3 +1,4 @@
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://bitbucket.org/lbesson/ansi-colors)
 # Moumoute Emacs
 
 > Not the Editor you need , but the one you deserve...\
