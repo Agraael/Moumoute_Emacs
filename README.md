@@ -1,4 +1,4 @@
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://bitbucket.org/lbesson/ansi-colors)
+[![Maintenance](https://i.kym-cdn.com/entries/icons/original/000/023/381/e79.jpg)
 # Moumoute Emacs
 
 > Not the Editor you need , but the one you deserve...\
