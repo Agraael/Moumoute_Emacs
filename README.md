@@ -1,4 +1,4 @@
-[![Maintenance](https://i.kym-cdn.com/entries/icons/original/000/023/381/e79.jpg)
+[![Maintenance]()
 # Moumoute Emacs
 
 > Not the Editor you need , but the one you deserve...\
